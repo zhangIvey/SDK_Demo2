@@ -7,14 +7,21 @@
 //
 
 #import "Pedometer_device.h"
+#import "TimeSetting.h"
+
+
 
 @implementation Pedometer_device
 
 
 //设置朝三
-- (BOOL)setSan:(NSString *)sanModel
+- (BOOL)setSan:(TimeSetting *)timeModel
 {
-
+    //拼接指令
+//    NSString *orderString = []
+    
+    //写指令
+    
     return YES;
 }
 

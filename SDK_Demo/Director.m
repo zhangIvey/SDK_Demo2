@@ -42,7 +42,7 @@
 /*
  *  配置朝三信息
  */
-- (void)setSanInfo:(NSString *)sanModel
+- (void)setSanInfo:(NSDate *)startTime and:(NSDate *)endTime
 {
     
 }

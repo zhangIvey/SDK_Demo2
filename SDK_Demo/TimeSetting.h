@@ -17,8 +17,9 @@ typedef enum  {
 } TimeType;
 
 @interface TimeSetting : NSObject
-@property(nonatomic, assign) TimeType type;
-@property(nonatomic, retain) NSDate *startTime;
-@property(nonatomic, retain) NSDate *endTime;
+
+@property(nonatomic, assign) TimeType   type;
+@property(nonatomic, strong) NSDate     *startTime;
+@property(nonatomic, strong) NSDate     *endTime;
 
 @end

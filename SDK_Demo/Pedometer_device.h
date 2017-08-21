@@ -7,13 +7,15 @@
 //
 
 #import "Dascom_device.h"
+#import "TimeSetting.h"
+
 /*
  * 得实的计步器设备
  */
 @interface Pedometer_device : Dascom_device
 
 //设置朝三
-- (BOOL)setSan:(NSString *)sanModel;
+- (BOOL)setSan:(TimeSetting *)timeModel;
 
 //设置暮四
 - (BOOL)setSi:(NSString *)siModel;

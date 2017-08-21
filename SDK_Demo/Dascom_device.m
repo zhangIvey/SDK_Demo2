@@ -21,7 +21,7 @@
  */
 - (id)readDeviceType
 {
-    
+//    NSString *orderString = [self.orderOper ]
     return nil;
 }
 

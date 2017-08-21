@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
+#import "Order_operaiton.h"
 
 /*
  * 得实健康设备类
@@ -24,6 +25,7 @@ typedef enum {
 @property(nonatomic, strong) CBService              *das_service;       //得实的服务
 @property(nonatomic, strong) NSMutableDictionary    *das_charas;        //得实的四个特征
 
+@property(nonatomic, strong) Order_operaiton        *orderOper;         //指令拼接操作类
 
 //基本属性
 @property(nonatomic, assign)    DeviceType   type;          //设备类型
