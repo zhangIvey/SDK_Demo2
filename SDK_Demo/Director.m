@@ -38,4 +38,14 @@
     [[BLEManager shareBLEManager] scan];
 }
 
+#pragma mark - 业务管理
+/*
+ *  配置朝三信息
+ */
+- (void)setSanInfo:(NSString *)sanModel
+{
+    
+}
+
+
 @end

@@ -10,6 +10,20 @@
 
 @implementation Pedometer_device
 
+
+//设置朝三
+- (BOOL)setSan:(NSString *)sanModel
+{
+
+    return YES;
+}
+
+//设置暮四
+- (BOOL)setSi:(NSString *)siModel
+{
+    return NO;
+}
+
 - (id)getDayRecord
 {
     return nil;

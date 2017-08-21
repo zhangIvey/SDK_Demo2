@@ -8,11 +8,20 @@
 
 #import "Dascom_device.h"
 
+
+@interface  Dascom_device()
+
+@end
+
 @implementation Dascom_device
 
 
+/*
+ * 初始化设备的基本信息
+ */
 - (id)readDeviceType
 {
+    
     return nil;
 }
 

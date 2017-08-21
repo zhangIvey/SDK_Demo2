@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Dascom_device.h"
 
 
 /*
@@ -14,6 +15,7 @@
  */
 @interface Director : NSObject
 
+@property(nonatomic, strong) Dascom_device *currentDevice;
 
 /*
  *  调度者单例
@@ -29,5 +31,10 @@
  */
 - (void)startScan;
 
+#pragma mark - 业务管理
+/*
+ *  配置朝三信息
+ */
+- (void)setSanInfo:(NSString *)sanModel;
 
 @end

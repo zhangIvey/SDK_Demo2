@@ -12,6 +12,12 @@
  */
 @interface Pedometer_device : Dascom_device
 
+//设置朝三
+- (BOOL)setSan:(NSString *)sanModel;
+
+//设置暮四
+- (BOOL)setSi:(NSString *)siModel;
+
 //天数据
 - (id)getDayRecord;
 

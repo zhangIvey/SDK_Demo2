@@ -12,4 +12,6 @@
  */
 @interface tw776_device : Pedometer_device
 
+
+
 @end
