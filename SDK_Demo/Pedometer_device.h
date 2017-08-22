@@ -14,16 +14,10 @@
  */
 @interface Pedometer_device : Dascom_device
 
-//设置朝三
-- (BOOL)setSan:(TimeSetting *)timeModel;
-
-//设置暮四
-- (BOOL)setSi:(NSString *)siModel;
-
-//天数据
-- (id)getDayRecord;
-
-//配置信息
-- (id)getSettingRecord;
+#pragma mark - 业务管理
+/*
+ *  配置朝三信息
+ */
+- (id)setSanInfo:(NSDate *)startTime and:(NSDate *)endTime;
 
 @end

@@ -12,10 +12,7 @@
 
 //=====================私有变量
 @property(nonatomic, strong) CBCentralManager *centralManager; //中心蓝牙设备管理者
-@property(nonatomic, strong) CBPeripheral *currentPeripheral; //已经连接上的蓝牙外设
-@property(nonatomic, strong) NSMutableArray *deviceArray; //外设的存放集合
-@property(nonatomic, strong) CBService *currentService; //服务；
-@property(nonatomic, strong) NSMutableDictionary *currentCharacteristics; //特征;
+@property(nonatomic, assign) BOOL isAutoConnect; //是否自动进行默认链接
 
 //=====================私有方法
 /**
@@ -36,7 +33,6 @@
         //成员变量初始化 -先使用主队列进行开发
         defaultBLEManager.centralManager = [[CBCentralManager alloc] initWithDelegate:defaultBLEManager queue:nil];
         
-        defaultBLEManager.currentCharacteristics = [[NSMutableDictionary alloc] initWithCapacity:4];
     });
     return defaultBLEManager;
 }
@@ -48,7 +44,6 @@
     for (CBService *service in peripheral.services) {
         NSLog(@"service UUID = %@",[service.UUID UUIDString]);
         if ([[service.UUID UUIDString] isEqualToString:@"01021525-0138-4968-BD13-824F74BE866C"]) {
-            _currentService = service;
             NSLog(@"计步器服务");
             //搜索特征
             [peripheral discoverCharacteristics:nil forService:service];
@@ -61,15 +56,19 @@
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(nullable NSError *)error
 {
     NSLog(@"获取到特征");
-    for (CBCharacteristic *characteristic in service.characteristics) {
-        NSLog(@"service.uuid = %@",[service.UUID UUIDString]);
-        NSLog(@"characteristic.uuid = %@",[characteristic.UUID UUIDString]);
-        if ([[characteristic.UUID UUIDString] rangeOfString:@"1526\1528"].length > 0) {
-            [_currentPeripheral setNotifyValue:YES forCharacteristic:characteristic];
+    if ([[service.UUID UUIDString] isEqualToString:@"01021525-0138-4968-BD13-824F74BE866C"]) {
+        for (CBCharacteristic *characteristic in service.characteristics) {
+            NSLog(@"service.uuid = %@",[service.UUID UUIDString]);
+            NSLog(@"characteristic.uuid = %@",[characteristic.UUID UUIDString]);
+            if ([[characteristic.UUID UUIDString] rangeOfString:@"1526\1528"].length > 0) {
+                
+            }
         }
-        [_currentCharacteristics setObject:characteristic forKey:[characteristic.UUID UUIDString]];
+        NSLog(@"蓝牙外设服务特征初始化完成");
     }
-    NSLog(@"蓝牙外设服务特征初始化完成");
+    
+    
+    
 }
 
 
@@ -110,9 +109,12 @@
     if ([peripheral.name rangeOfString:@"DS"].length > 0) {
         NSLog(@"得实的设备");
         //直接发起链接
-        [self stopScan];
-        _currentPeripheral = peripheral;
-        [self toConnnect:_currentPeripheral];
+//        [self stopScan];
+        if (_isAutoConnect) {
+            [self toConnnect:peripheral];
+            [self stopScan];
+        }
+        
     }
 }
 
@@ -122,7 +124,6 @@
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
     NSLog(@"和外设链接成功");
-    
     //01021525-0138-4968-BD13-824F74BE866C uuid
     [peripheral discoverServices:nil];
     
@@ -130,7 +131,7 @@
 
 
 /**
- 中心蓝牙和某个外设连接失败。
+ * 中心蓝牙和某个外设连接失败。
  */
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error
 {
@@ -147,7 +148,7 @@
 {
     //蓝牙设备的状态检测
     if (self.centralManager.isScanning) {
-        self.state = BLE_STATE_SCANNING;
+//        self.state = BLE_STATE_SCANNING;
         return YES;
     }
     
@@ -179,11 +180,10 @@
     return NO;
 }
 
-
 /**
- * 开始扫描
+ * 开始扫描并且默认链接
  */
-- (void) scan
+- (void)scanAndConnect
 {
     if (![self checkPointAvailable]) {
         //不能开启
@@ -192,6 +192,23 @@
     //开启扫描
     NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:NO],CBCentralManagerScanOptionAllowDuplicatesKey, nil];
     [self.centralManager scanForPeripheralsWithServices:nil options:options];
+    self.isAutoConnect = YES;
+}
+
+/**
+ * 开始扫描
+ */
+- (void) scan
+{
+    if (![self checkPointAvailable]) {
+        //不能开启
+        
+        return;
+    }
+    //开启扫描
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:NO],CBCentralManagerScanOptionAllowDuplicatesKey, nil];
+    [self.centralManager scanForPeripheralsWithServices:nil options:options];
+    self.isAutoConnect = NO;
 }
 
 /**
@@ -228,8 +245,8 @@
 
 - (void) sendMessage:(NSString *)order ToDeviceWithUUID:(NSString *)uuidString
 {
-    NSData *orderData = [[NSData alloc] initWithBase64EncodedString:order options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    [_currentPeripheral writeValue:orderData forCharacteristic:[_currentCharacteristics objectForKey:uuidString] type:CBCharacteristicWriteWithResponse];
+//    NSData *orderData = [[NSData alloc] initWithBase64EncodedString:order options:NSDataBase64DecodingIgnoreUnknownCharacters];
+//    [_currentPeripheral writeValue:orderData forCharacteristic:[_currentCharacteristics objectForKey:uuidString] type:CBCharacteristicWriteWithResponse];
 
 }
 

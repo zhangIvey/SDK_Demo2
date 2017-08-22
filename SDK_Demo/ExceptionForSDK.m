@@ -10,4 +10,15 @@
 
 @implementation ExceptionForSDK
 
+
+- (instancetype)initWith:(int )typeID andWith:(NSString *)description
+{
+    self = [super init];
+    if (self) {
+        self.exceptionType = typeID;
+        self.exceptionDes = description;
+    }
+    return self;
+}
+
 @end

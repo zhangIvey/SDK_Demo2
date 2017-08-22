@@ -8,10 +8,13 @@
 
 #import "Director.h"
 #import "BLEManager.h"
+#import "Dascom_device.h"
+#import "tw776_device.h"
 
 @interface Director ()
 
-@property(nonatomic, strong) BLEManager *bleManager;
+@property(nonatomic, strong) BLEManager     *bleManager;
+@property(nonatomic, strong) Dascom_device  *device;   //已经连接上的设备。在手机和设备连接完成之后，会初始化装配上device对象。
 
 @end
 
@@ -29,11 +32,19 @@
     return defaultDirector;
 }
 
+#pragma mark - 异常收集
+- (void)exception
+{
+    tw776_device *tw776 = [[tw776_device alloc] init];
+//    [tw776 setSanInfo:<#(NSDate *)#> and:<#(NSDate *)#>]
+    [tw776 doSomethingElse];
+}
+
 #pragma mark - 蓝牙管理
 /*
  *  开启蓝牙扫描
  */
-- (void)startScan
+- (void)makeCommunicationWithDevice
 {
     [[BLEManager shareBLEManager] scan];
 }
@@ -45,6 +56,13 @@
 - (void)setSanInfo:(NSDate *)startTime and:(NSDate *)endTime
 {
     
+}
+/*
+ *  配置暮四信息
+ */
+- (void)setSiInfo:(NSDate *)startTime and:(NSDate *)endTime
+{
+
 }
 
 

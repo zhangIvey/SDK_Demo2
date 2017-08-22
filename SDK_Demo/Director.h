@@ -27,14 +27,21 @@
 
 #pragma mark - 蓝牙管理
 /*
- *  开启蓝牙扫描
+ *  开启蓝牙扫描，并连接上设备
  */
-- (void)startScan;
+- (void)makeCommunicationWithDevice;
+
 
 #pragma mark - 业务管理
 /*
  *  配置朝三信息
  */
-- (void)setSanInfo:(NSString *)sanModel;
+- (void)setSanInfo:(NSDate *)startTime and:(NSDate *)endTime;
+
+/*
+ *  配置暮四信息
+ */
+- (void)setSiInfo:(NSDate *)startTime and:(NSDate *)endTime;
+
 
 @end

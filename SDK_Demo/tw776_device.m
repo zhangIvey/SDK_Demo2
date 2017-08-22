@@ -10,6 +10,9 @@
 
 @implementation tw776_device
 
-
+- (void)doSomethingElse
+{
+    NSLog(@"TW776 do something else");
+}
 
 @end

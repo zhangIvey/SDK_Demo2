@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7572BE731F4A8D3500CF8C38 /* BLU_service.m in Sources */ = {isa = PBXBuildFile; fileRef = 7572BE721F4A8D3500CF8C38 /* BLU_service.m */; };
-		7572BE761F4A8D6D00CF8C38 /* BLU_characteristic.m in Sources */ = {isa = PBXBuildFile; fileRef = 7572BE751F4A8D6D00CF8C38 /* BLU_characteristic.m */; };
 		757F91131F3C4D8500D63D55 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 757F91121F3C4D8500D63D55 /* main.m */; };
 		757F91161F3C4D8500D63D55 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 757F91151F3C4D8500D63D55 /* AppDelegate.m */; };
 		757F91191F3C4D8500D63D55 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 757F91181F3C4D8500D63D55 /* ViewController.m */; };
@@ -28,14 +26,11 @@
 		757F91811F42999800D63D55 /* FBKVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = 757F917C1F42999800D63D55 /* FBKVOController.m */; };
 		757F91821F42999800D63D55 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 757F917D1F42999800D63D55 /* Info.plist */; };
 		757F91831F42999800D63D55 /* NSObject+FBKVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = 757F91801F42999800D63D55 /* NSObject+FBKVOController.m */; };
+		75867BAA1F4C2455003E4A6D /* ResultForBLE.m in Sources */ = {isa = PBXBuildFile; fileRef = 75867BA91F4C2455003E4A6D /* ResultForBLE.m */; };
 		75E986261F468D800055691D /* ExceptionForSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E986251F468D800055691D /* ExceptionForSDK.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7572BE711F4A8D3500CF8C38 /* BLU_service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLU_service.h; sourceTree = "<group>"; };
-		7572BE721F4A8D3500CF8C38 /* BLU_service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLU_service.m; sourceTree = "<group>"; };
-		7572BE741F4A8D6D00CF8C38 /* BLU_characteristic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLU_characteristic.h; sourceTree = "<group>"; };
-		7572BE751F4A8D6D00CF8C38 /* BLU_characteristic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLU_characteristic.m; sourceTree = "<group>"; };
 		757F910E1F3C4D8500D63D55 /* SDK_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDK_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		757F91121F3C4D8500D63D55 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		757F91141F3C4D8500D63D55 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -71,6 +66,8 @@
 		757F917E1F42999800D63D55 /* KVOController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KVOController.h; path = lib/FBKVOController/KVOController.h; sourceTree = "<group>"; };
 		757F917F1F42999800D63D55 /* NSObject+FBKVOController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+FBKVOController.h"; path = "lib/FBKVOController/NSObject+FBKVOController.h"; sourceTree = "<group>"; };
 		757F91801F42999800D63D55 /* NSObject+FBKVOController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+FBKVOController.m"; path = "lib/FBKVOController/NSObject+FBKVOController.m"; sourceTree = "<group>"; };
+		75867BA81F4C2455003E4A6D /* ResultForBLE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultForBLE.h; sourceTree = "<group>"; };
+		75867BA91F4C2455003E4A6D /* ResultForBLE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultForBLE.m; sourceTree = "<group>"; };
 		75E986241F468D800055691D /* ExceptionForSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExceptionForSDK.h; sourceTree = "<group>"; };
 		75E986251F468D800055691D /* ExceptionForSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExceptionForSDK.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,17 +84,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7572BE701F4A8D0A00CF8C38 /* services */ = {
-			isa = PBXGroup;
-			children = (
-				7572BE711F4A8D3500CF8C38 /* BLU_service.h */,
-				7572BE721F4A8D3500CF8C38 /* BLU_service.m */,
-				7572BE741F4A8D6D00CF8C38 /* BLU_characteristic.h */,
-				7572BE751F4A8D6D00CF8C38 /* BLU_characteristic.m */,
-			);
-			name = services;
-			sourceTree = "<group>";
-		};
 		757F91051F3C4D8400D63D55 = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +138,8 @@
 				757F912A1F3C4E1500D63D55 /* Director.m */,
 				75E986241F468D800055691D /* ExceptionForSDK.h */,
 				75E986251F468D800055691D /* ExceptionForSDK.m */,
+				75867BA81F4C2455003E4A6D /* ResultForBLE.h */,
+				75867BA91F4C2455003E4A6D /* ResultForBLE.m */,
 			);
 			name = SDK;
 			sourceTree = "<group>";
@@ -211,7 +199,6 @@
 		757F917A1F42997A00D63D55 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				7572BE701F4A8D0A00CF8C38 /* services */,
 				757F91871F429FDB00D63D55 /* source */,
 				757F91841F4299A400D63D55 /* FBKVO */,
 			);
@@ -313,6 +300,7 @@
 			files = (
 				757F913F1F3C515D00D63D55 /* Order_operaiton.m in Sources */,
 				757F91761F428A8900D63D55 /* TimeSetting.m in Sources */,
+				75867BAA1F4C2455003E4A6D /* ResultForBLE.m in Sources */,
 				757F913C1F3C510900D63D55 /* SDK_tools.m in Sources */,
 				757F91191F3C4D8500D63D55 /* ViewController.m in Sources */,
 				757F91421F3C518900D63D55 /* Parse_operation.m in Sources */,
@@ -322,11 +310,9 @@
 				757F912B1F3C4E1500D63D55 /* Director.m in Sources */,
 				757F91461F3C51C800D63D55 /* BLEManager.m in Sources */,
 				757F91161F3C4D8500D63D55 /* AppDelegate.m in Sources */,
-				7572BE731F4A8D3500CF8C38 /* BLU_service.m in Sources */,
 				757F912F1F3C4F9B00D63D55 /* Dascom_device.m in Sources */,
 				757F91131F3C4D8500D63D55 /* main.m in Sources */,
 				757F91811F42999800D63D55 /* FBKVOController.m in Sources */,
-				7572BE761F4A8D6D00CF8C38 /* BLU_characteristic.m in Sources */,
 				757F91381F3C504900D63D55 /* tw776_device.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

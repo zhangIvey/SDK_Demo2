@@ -14,31 +14,13 @@
 @implementation Pedometer_device
 
 
-//设置朝三
-- (BOOL)setSan:(TimeSetting *)timeModel
+- (id)setSanInfo:(NSDate *)startTime and:(NSDate *)endTime
 {
     //拼接指令
-//    NSString *orderString = []
-    
-    //写指令
-    
-    return YES;
-}
-
-//设置暮四
-- (BOOL)setSi:(NSString *)siModel
-{
-    return NO;
-}
-
-- (id)getDayRecord
-{
+    //执行蓝牙通信
+    //接收的数据
+    //数据处理
+    //return
     return nil;
 }
-
-- (id)getSettingRecord
-{
-    return nil;
-}
-
 @end

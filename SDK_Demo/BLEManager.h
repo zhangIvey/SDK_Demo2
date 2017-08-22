@@ -10,27 +10,36 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "FBKVOController.h"
 #import "SDK_tools.h"
+#import "Dascom_device.h"
+#import "ResultForBLE.h"
 
 /*
  * 蓝牙控制器
  */
 
-typedef enum {
-    BLE_STATE_CONNECTTING = 0, //连接成功
-    BLE_STATE_SCANNING = 1, //扫描中
-    BLE_STATE_DISCONNECTED = 2, //断开连接
-    BLE_STATE_FREE = 3 //空闲状态
-} BLE_state;
+//typedef enum {
+//    BLE_STATE_CONNECTTING = 0, //连接成功
+//    BLE_STATE_SCANNING = 1, //扫描中
+//    BLE_STATE_DISCONNECTED = 2, //断开连接
+//    BLE_STATE_FREE = 3 //空闲状态
+//} BLE_state;
 
-
+typedef  ResultForBLE* (^ConnectBlock)();
+/* NSMutableDictionary result 格式定义
+     |   key     |   value          |
+     |  "excType"|   0/1/2          |
+     |  "excDes" |  异常的文字描述  |
+     |  "data"   |  对象object      |
+ */
 
 @interface BLEManager : NSObject
 
-@property(nonatomic, assign) BLE_state state;
+@property(nonatomic, copy) ConnectBlock connectBlock;
 
 + (BLEManager *)shareBLEManager;
 
 - (void) scan; //扫描
+- (void) scanAndConnect;//开始扫描并且默认链接
 - (void) stopScan; //停止扫描
 - (void) toConnnect:(CBPeripheral *)peripheral; //发起连接外设
 - (void) disConnect; //和外设断开连接

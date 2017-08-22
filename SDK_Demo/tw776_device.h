@@ -12,6 +12,8 @@
  */
 @interface tw776_device : Pedometer_device
 
+@property(nonatomic, copy) NSString *anythingElse;
 
+- (void)doSomethingElse;
 
 @end

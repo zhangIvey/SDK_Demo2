@@ -14,5 +14,7 @@ typedef enum {
 } exeption_type;
 
 @interface ExceptionForSDK : NSObject
+@property(nonatomic, assign) int exceptionType; //异常类型
+@property(nonatomic, copy) NSString *exceptionDes; //异常的描述
 
 @end

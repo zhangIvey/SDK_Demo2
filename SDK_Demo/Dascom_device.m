@@ -16,23 +16,22 @@
 @implementation Dascom_device
 
 
-/*
- * 初始化设备的基本信息
- */
-- (id)readDeviceType
+- (instancetype)init
 {
-//    NSString *orderString = [self.orderOper ]
-    return nil;
+    self = [super init];
+    if (self) {
+        self.bleManager = [BLEManager shareBLEManager];
+    }
+    return self;
+}
+#pragma mark - 蓝牙管理
+- (void)makeCommunicationWithDevice
+{
+    [self.bleManager scanAndConnect]; //扫描，并且进行连接
+    
 }
 
-- (id)readDeviceID
-{
-    return nil;
-}
 
 
-- (id)readFirmwareVersion
-{
-    return nil;
-}
+
 @end
