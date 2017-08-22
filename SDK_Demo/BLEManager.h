@@ -29,13 +29,19 @@ typedef  void (^ConnectBlock)(NSMutableDictionary *);
 
 /* NSMutableDictionary result 格式定义
      |   key     |   value          |
-     |  "excType"|   0/1/2          |
+     |  "excType"|   0/1/2          | 0: 没有异常 1：功能异常 2：数据异常
      |  "excDes" |  异常的文字描述  |
      |  "data"   |  对象object      |
  */
 
 @interface BLEManager : NSObject
 
+//角色实例
+@property(nonatomic, strong) CBPeripheral *cPeripheral;
+@property(nonatomic, strong) CBService *server;
+@property(nonatomic, strong) NSMutableDictionary *chars;
+
+//结果实例
 @property(nonatomic, copy) ConnectBlock connectBlock;
 
 + (BLEManager *)shareBLEManager;

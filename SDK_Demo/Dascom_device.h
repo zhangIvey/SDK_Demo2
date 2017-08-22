@@ -63,7 +63,7 @@ typedef enum {
 
 #pragma mark - 业务管理
 //获取设备类型
-//- (id)readDeviceType;
+- (id)readDeviceType;
 //
 ////获取设备序列号
 //- (id)readDeviceID;

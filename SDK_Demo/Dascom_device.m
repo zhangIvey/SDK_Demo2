@@ -29,6 +29,22 @@
 - (void)makeCommunicationWithDevice
 {
     [self.bleManager scanAndConnect]; //扫描，并且进行连接
+    self.bleManager.connectBlock = ^(NSMutableDictionary *resultDic){
+        //异常解析
+        if ([[resultDic valueForKey:@"excType"] intValue] > 0) {
+            [resultDic valueForKey:@"excDes"];
+            NSLog(@"异常信息:%@",[resultDic valueForKey:@"excDes"]);
+            return ;
+        }
+        NSLog(@"链接成功");
+        
+    };
+}
+
+//获取设备类型
+- (id)readDeviceType
+{
+    //判断链接状态
     
 }
 

@@ -57,12 +57,15 @@
 {
     NSLog(@"获取到特征");
     if ([[service.UUID UUIDString] isEqualToString:@"01021525-0138-4968-BD13-824F74BE866C"]) {
+        self.cPeripheral = peripheral;
+        self.server = service;
         for (CBCharacteristic *characteristic in service.characteristics) {
             NSLog(@"service.uuid = %@",[service.UUID UUIDString]);
             NSLog(@"characteristic.uuid = %@",[characteristic.UUID UUIDString]);
             if ([[characteristic.UUID UUIDString] rangeOfString:@"1526\1528"].length > 0) {
-                
+                [self.cPeripheral setNotifyValue:YES forCharacteristic:characteristic];
             }
+            [self.chars setObject:characteristic forKey:[[characteristic UUID] UUIDString]];
         }
         NSLog(@"蓝牙外设服务特征初始化完成");
     }
@@ -126,7 +129,6 @@
     NSLog(@"和外设链接成功");
     //01021525-0138-4968-BD13-824F74BE866C uuid
     [peripheral discoverServices:nil];
-    
 }
 
 
