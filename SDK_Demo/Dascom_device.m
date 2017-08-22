@@ -25,6 +25,7 @@
     return self;
 }
 #pragma mark - 蓝牙管理
+//扫描 + 默认链接上蓝牙设备
 - (void)makeCommunicationWithDevice
 {
     [self.bleManager scanAndConnect]; //扫描，并且进行连接

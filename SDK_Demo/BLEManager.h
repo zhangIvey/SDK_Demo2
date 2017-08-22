@@ -24,7 +24,9 @@
 //    BLE_STATE_FREE = 3 //空闲状态
 //} BLE_state;
 
-typedef  ResultForBLE* (^ConnectBlock)();
+typedef  void (^ConnectBlock)(NSMutableDictionary *);
+
+
 /* NSMutableDictionary result 格式定义
      |   key     |   value          |
      |  "excType"|   0/1/2          |
@@ -38,8 +40,10 @@ typedef  ResultForBLE* (^ConnectBlock)();
 
 + (BLEManager *)shareBLEManager;
 
-- (void) scan; //扫描
+
 - (void) scanAndConnect;//开始扫描并且默认链接
+
+- (void) scan; //扫描
 - (void) stopScan; //停止扫描
 - (void) toConnnect:(CBPeripheral *)peripheral; //发起连接外设
 - (void) disConnect; //和外设断开连接
