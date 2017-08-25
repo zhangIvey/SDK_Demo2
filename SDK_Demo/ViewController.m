@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "Director.h"
+#import "Dascom_device.h"
+#import "tw776_device.h"
 
 @interface ViewController ()
 
@@ -68,8 +69,14 @@
  */
 - (void)scanButton_click
 {
-    //开启蓝牙进行扫描
-    [[Director shareDirector] startScan];
+    //开启蓝牙进行扫描 TW776
+    Dascom_device *device = [[Dascom_device alloc] init];
+    
+    [device makeCommunicationWithDevice];
+    device.supClassName = @"tw776_device"; //从硬件读取
+
+    [device doSomethingElse];
+    
 }
 
 @end

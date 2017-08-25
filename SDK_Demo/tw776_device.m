@@ -10,9 +10,10 @@
 
 @implementation tw776_device
 
-- (void)doSomethingElse
+- (NSString *)doSomethingElse
 {
     NSLog(@"TW776 do something else");
+    return @"处理数据完毕";
 }
 
 @end

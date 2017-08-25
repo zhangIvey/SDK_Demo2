@@ -10,6 +10,7 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "Order_operaiton.h"
 #import "BLEManager.h"
+#import "tw776_device.h"
 
 /*
  * 得实健康设备类
@@ -35,17 +36,9 @@ typedef enum {
 
 @interface Dascom_device : NSObject
 
-//关联硬件外设
-@property(nonatomic, strong) CBPeripheral           *das_peripheral;    //建立连接的得实设备
-@property(nonatomic, strong) CBService              *das_service;       //得实的服务
-@property(nonatomic, strong) NSMutableDictionary    *das_charas;        //得实的四个特征
-
-//功能上的应用实例
-@property(nonatomic, strong) Order_operaiton        *orderOper;         //指令拼接操作类
-@property(nonatomic, strong) BLEManager             *bleManager;        //蓝牙管理
-
 //基本属性
 @property(nonatomic, assign)    DeviceType   type;          //设备类型
+@property(nonatomic, copy)      NSString    *supClassName;
 @property(nonatomic, copy)      NSString    *deviceModel;   //设备型号
 @property(nonatomic, copy)      NSString    *deviceID;      //设备序列号
 @property(nonatomic, copy)      NSString    *firmWareVer;   //固件版本
@@ -58,7 +51,10 @@ typedef enum {
 /*
  *  开启蓝牙扫描，并连接上设备
  */
-- (void)makeCommunicationWithDevice;
+- (void)makeCommunicationWithDevice;//Demo
+
+- (void)scan;
+- (void)toConnect;
 
 
 #pragma mark - 业务管理
@@ -66,9 +62,9 @@ typedef enum {
 - (id)readDeviceType;
 //
 ////获取设备序列号
-//- (id)readDeviceID;
+- (id)readDeviceID;
 //
 ////获取设备固件版本
-//- (id)readFirmwareVersion;
+- (id)readFirmwareVersion;
 
 @end

@@ -14,6 +14,6 @@
 
 @property(nonatomic, copy) NSString *anythingElse;
 
-- (void)doSomethingElse;
+- (NSString *)doSomethingElse;
 
 @end

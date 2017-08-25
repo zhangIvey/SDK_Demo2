@@ -7,7 +7,6 @@
 //
 
 #import "Dascom_device.h"
-#import "TimeSetting.h"
 
 /*
  * 得实的计步器设备

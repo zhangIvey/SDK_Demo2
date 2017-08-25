@@ -7,7 +7,7 @@
 //
 
 #import "Pedometer_device.h"
-#import "TimeSetting.h"
+
 
 
 

@@ -9,7 +9,7 @@
 #import "Dascom_device.h"
 #import "ExceptionForSDK.h"
 
-@interface ResultForBLE : Dascom_device
+@interface ResultForBLE : NSObject
 @property(nonatomic, assign) BOOL isSuccess;
 @property(nonatomic, strong) ExceptionForSDK *exception;
 

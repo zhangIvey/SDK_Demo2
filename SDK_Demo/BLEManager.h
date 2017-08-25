@@ -38,8 +38,8 @@ typedef  void (^ConnectBlock)(NSMutableDictionary *);
 
 //角色实例
 @property(nonatomic, strong) CBPeripheral *cPeripheral;
-@property(nonatomic, strong) CBService *server;
-@property(nonatomic, strong) NSMutableDictionary *chars;
+@property(nonatomic, strong) CBService *service;
+@property(nonatomic, strong) NSMutableDictionary *characteristicsDic;
 
 //结果实例
 @property(nonatomic, copy) ConnectBlock connectBlock;

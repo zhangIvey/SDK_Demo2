@@ -56,19 +56,30 @@
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(nullable NSError *)error
 {
     NSLog(@"获取到特征");
-    if ([[service.UUID UUIDString] isEqualToString:@"01021525-0138-4968-BD13-824F74BE866C"]) {
-        self.cPeripheral = peripheral;
-        self.server = service;
-        for (CBCharacteristic *characteristic in service.characteristics) {
-            NSLog(@"service.uuid = %@",[service.UUID UUIDString]);
-            NSLog(@"characteristic.uuid = %@",[characteristic.UUID UUIDString]);
-            if ([[characteristic.UUID UUIDString] rangeOfString:@"1526\1528"].length > 0) {
-                [self.cPeripheral setNotifyValue:YES forCharacteristic:characteristic];
+    @try {
+        if ([[service.UUID UUIDString] isEqualToString:@"01021525-0138-4968-BD13-824F74BE866C"]) {
+            self.cPeripheral = peripheral;
+            self.service = service;
+            for (CBCharacteristic *characteristic in service.characteristics) {
+                NSLog(@"service.uuid = %@",[service.UUID UUIDString]);
+                NSLog(@"characteristic.uuid = %@",[characteristic.UUID UUIDString]);
+                if ([[characteristic.UUID UUIDString] rangeOfString:@"1526\1528"].length > 0) {
+                    [self.cPeripheral setNotifyValue:YES forCharacteristic:characteristic];
+                }
+                [self.characteristicsDic setObject:characteristic forKey:[[characteristic UUID] UUIDString]];
             }
-            [self.chars setObject:characteristic forKey:[[characteristic UUID] UUIDString]];
+            NSLog(@"蓝牙外设服务特征初始化完成");
+        }else{
+            NSMutableDictionary *errorDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"2",@"excType",@"没有发现万步服务",@"excDes",@"",@"data",nil]; //这个可以单独抽到工具类方法中实现，暴露方法调用
+            self.connectBlock(errorDic);
         }
-        NSLog(@"蓝牙外设服务特征初始化完成");
+    } @catch (NSException *exception) {
+        NSMutableDictionary *errorDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1",@"excType",@"代码解析服务出错",@"excDes",@"",@"data",nil]; //这个可以单独抽到工具类方法中实现，暴露方法调用
+        self.connectBlock(errorDic);
+    } @finally {
+        return;
     }
+    
     
     
     
@@ -111,10 +122,12 @@
 
     if ([peripheral.name rangeOfString:@"DS"].length > 0) {
         NSLog(@"得实的设备");
-        //直接发起链接
-//        [self stopScan];
+        self.cPeripheral = peripheral;
+        [self stopScan];
         if (_isAutoConnect) {
-            [self toConnnect:peripheral];
+            //直接发起链接
+            NSLog(@"self.cPeripheral = %@",peripheral);
+            [self toConnnect:self.cPeripheral];
             [self stopScan];
         }
         
@@ -139,7 +152,9 @@
 {
     NSLog(@"和外设链接失败");
     //收集异常
+    
 }
+
 
 
 #pragma mark - 封装的方法
@@ -150,7 +165,6 @@
 {
     //蓝牙设备的状态检测
     if (self.centralManager.isScanning) {
-//        self.state = BLE_STATE_SCANNING;
         return YES;
     }
     
