@@ -25,6 +25,16 @@
 		757F91821F42999800D63D55 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 757F917D1F42999800D63D55 /* Info.plist */; };
 		757F91831F42999800D63D55 /* NSObject+FBKVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = 757F91801F42999800D63D55 /* NSObject+FBKVOController.m */; };
 		75867BAA1F4C2455003E4A6D /* ResultForBLE.m in Sources */ = {isa = PBXBuildFile; fileRef = 75867BA91F4C2455003E4A6D /* ResultForBLE.m */; };
+		75867BB31F57E3B7003E4A6D /* WB_BLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 75867BB21F57E3B7003E4A6D /* WB_BLEManager.m */; };
+		75867BB61F57E573003E4A6D /* WB_Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 75867BB51F57E573003E4A6D /* WB_Device.m */; };
+		75867BBD1F57E5F3003E4A6D /* WB_Pedometer.m in Sources */ = {isa = PBXBuildFile; fileRef = 75867BBC1F57E5F3003E4A6D /* WB_Pedometer.m */; };
+		75867BC11F57E658003E4A6D /* WB_Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 75867BC01F57E658003E4A6D /* WB_Scale.m */; };
+		75867BC41F57E674003E4A6D /* WB_TW776.m in Sources */ = {isa = PBXBuildFile; fileRef = 75867BC31F57E674003E4A6D /* WB_TW776.m */; };
+		75867BC71F57E690003E4A6D /* WB_SW556.m in Sources */ = {isa = PBXBuildFile; fileRef = 75867BC61F57E690003E4A6D /* WB_SW556.m */; };
+		75867BCE1F57E8E6003E4A6D /* WB_morning_evening_Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 75867BCD1F57E8E6003E4A6D /* WB_morning_evening_Model.m */; };
+		75867BD11F57EC70003E4A6D /* WB_actionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75867BD01F57EC70003E4A6D /* WB_actionModel.m */; };
+		75867BD41F57F059003E4A6D /* WB_TW776_SomethingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75867BD31F57F059003E4A6D /* WB_TW776_SomethingModel.m */; };
+		75867BD81F57F43B003E4A6D /* WB_DevOpe.m in Sources */ = {isa = PBXBuildFile; fileRef = 75867BD71F57F43B003E4A6D /* WB_DevOpe.m */; };
 		75E986261F468D800055691D /* ExceptionForSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E986251F468D800055691D /* ExceptionForSDK.m */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +72,26 @@
 		757F91801F42999800D63D55 /* NSObject+FBKVOController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+FBKVOController.m"; path = "lib/FBKVOController/NSObject+FBKVOController.m"; sourceTree = "<group>"; };
 		75867BA81F4C2455003E4A6D /* ResultForBLE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultForBLE.h; sourceTree = "<group>"; };
 		75867BA91F4C2455003E4A6D /* ResultForBLE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultForBLE.m; sourceTree = "<group>"; };
+		75867BB11F57E3B7003E4A6D /* WB_BLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WB_BLEManager.h; path = BLE/WB_BLEManager.h; sourceTree = "<group>"; };
+		75867BB21F57E3B7003E4A6D /* WB_BLEManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WB_BLEManager.m; path = BLE/WB_BLEManager.m; sourceTree = "<group>"; };
+		75867BB41F57E573003E4A6D /* WB_Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WB_Device.h; path = Device/WB_Device.h; sourceTree = "<group>"; };
+		75867BB51F57E573003E4A6D /* WB_Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WB_Device.m; path = Device/WB_Device.m; sourceTree = "<group>"; };
+		75867BBB1F57E5F3003E4A6D /* WB_Pedometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WB_Pedometer.h; path = Pedometer/WB_Pedometer.h; sourceTree = "<group>"; };
+		75867BBC1F57E5F3003E4A6D /* WB_Pedometer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WB_Pedometer.m; path = Pedometer/WB_Pedometer.m; sourceTree = "<group>"; };
+		75867BBF1F57E658003E4A6D /* WB_Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WB_Scale.h; path = Scale/WB_Scale.h; sourceTree = "<group>"; };
+		75867BC01F57E658003E4A6D /* WB_Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WB_Scale.m; path = Scale/WB_Scale.m; sourceTree = "<group>"; };
+		75867BC21F57E674003E4A6D /* WB_TW776.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WB_TW776.h; path = Pedometer/WB_TW776.h; sourceTree = "<group>"; };
+		75867BC31F57E674003E4A6D /* WB_TW776.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WB_TW776.m; path = Pedometer/WB_TW776.m; sourceTree = "<group>"; };
+		75867BC51F57E690003E4A6D /* WB_SW556.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WB_SW556.h; path = Scale/WB_SW556.h; sourceTree = "<group>"; };
+		75867BC61F57E690003E4A6D /* WB_SW556.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WB_SW556.m; path = Scale/WB_SW556.m; sourceTree = "<group>"; };
+		75867BCC1F57E8E6003E4A6D /* WB_morning_evening_Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WB_morning_evening_Model.h; path = Pedometer/ActionModel/WB_morning_evening_Model.h; sourceTree = "<group>"; };
+		75867BCD1F57E8E6003E4A6D /* WB_morning_evening_Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WB_morning_evening_Model.m; path = Pedometer/ActionModel/WB_morning_evening_Model.m; sourceTree = "<group>"; };
+		75867BCF1F57EC70003E4A6D /* WB_actionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WB_actionModel.h; sourceTree = "<group>"; };
+		75867BD01F57EC70003E4A6D /* WB_actionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WB_actionModel.m; sourceTree = "<group>"; };
+		75867BD21F57F059003E4A6D /* WB_TW776_SomethingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WB_TW776_SomethingModel.h; path = Pedometer/ActionModel/WB_TW776_SomethingModel.h; sourceTree = "<group>"; };
+		75867BD31F57F059003E4A6D /* WB_TW776_SomethingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WB_TW776_SomethingModel.m; path = Pedometer/ActionModel/WB_TW776_SomethingModel.m; sourceTree = "<group>"; };
+		75867BD61F57F43B003E4A6D /* WB_DevOpe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WB_DevOpe.h; path = API/WB_DevOpe.h; sourceTree = "<group>"; };
+		75867BD71F57F43B003E4A6D /* WB_DevOpe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WB_DevOpe.m; path = API/WB_DevOpe.m; sourceTree = "<group>"; };
 		75E986241F468D800055691D /* ExceptionForSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExceptionForSDK.h; sourceTree = "<group>"; };
 		75E986251F468D800055691D /* ExceptionForSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExceptionForSDK.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +128,7 @@
 		757F91101F3C4D8500D63D55 /* SDK_Demo */ = {
 			isa = PBXGroup;
 			children = (
+				75867BAB1F57D5EA003E4A6D /* SDK_2 */,
 				757F91281F3C4DD800D63D55 /* SDK */,
 				757F91141F3C4D8500D63D55 /* AppDelegate.h */,
 				757F91151F3C4D8500D63D55 /* AppDelegate.m */,
@@ -207,6 +238,97 @@
 			name = source;
 			sourceTree = "<group>";
 		};
+		75867BAB1F57D5EA003E4A6D /* SDK_2 */ = {
+			isa = PBXGroup;
+			children = (
+				75867BB01F57E137003E4A6D /* Source */,
+				75867BAF1F57E123003E4A6D /* Device */,
+				75867BAE1F57E11B003E4A6D /* Tools */,
+				75867BAC1F57D5FD003E4A6D /* BLE */,
+			);
+			name = SDK_2;
+			sourceTree = "<group>";
+		};
+		75867BAC1F57D5FD003E4A6D /* BLE */ = {
+			isa = PBXGroup;
+			children = (
+				75867BB11F57E3B7003E4A6D /* WB_BLEManager.h */,
+				75867BB21F57E3B7003E4A6D /* WB_BLEManager.m */,
+			);
+			name = BLE;
+			sourceTree = "<group>";
+		};
+		75867BAE1F57E11B003E4A6D /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
+		75867BAF1F57E123003E4A6D /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				75867BB41F57E573003E4A6D /* WB_Device.h */,
+				75867BB51F57E573003E4A6D /* WB_Device.m */,
+				75867BC81F57E821003E4A6D /* ActionModel */,
+				75867BD51F57F408003E4A6D /* API */,
+				75867BBE1F57E5FD003E4A6D /* Scale */,
+				75867BBA1F57E5C8003E4A6D /* Pedometer */,
+			);
+			name = Device;
+			sourceTree = "<group>";
+		};
+		75867BB01F57E137003E4A6D /* Source */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		75867BBA1F57E5C8003E4A6D /* Pedometer */ = {
+			isa = PBXGroup;
+			children = (
+				75867BBB1F57E5F3003E4A6D /* WB_Pedometer.h */,
+				75867BBC1F57E5F3003E4A6D /* WB_Pedometer.m */,
+				75867BC21F57E674003E4A6D /* WB_TW776.h */,
+				75867BC31F57E674003E4A6D /* WB_TW776.m */,
+			);
+			name = Pedometer;
+			sourceTree = "<group>";
+		};
+		75867BBE1F57E5FD003E4A6D /* Scale */ = {
+			isa = PBXGroup;
+			children = (
+				75867BBF1F57E658003E4A6D /* WB_Scale.h */,
+				75867BC01F57E658003E4A6D /* WB_Scale.m */,
+				75867BC51F57E690003E4A6D /* WB_SW556.h */,
+				75867BC61F57E690003E4A6D /* WB_SW556.m */,
+			);
+			name = Scale;
+			sourceTree = "<group>";
+		};
+		75867BC81F57E821003E4A6D /* ActionModel */ = {
+			isa = PBXGroup;
+			children = (
+				75867BCF1F57EC70003E4A6D /* WB_actionModel.h */,
+				75867BD01F57EC70003E4A6D /* WB_actionModel.m */,
+				75867BCC1F57E8E6003E4A6D /* WB_morning_evening_Model.h */,
+				75867BCD1F57E8E6003E4A6D /* WB_morning_evening_Model.m */,
+				75867BD21F57F059003E4A6D /* WB_TW776_SomethingModel.h */,
+				75867BD31F57F059003E4A6D /* WB_TW776_SomethingModel.m */,
+			);
+			name = ActionModel;
+			sourceTree = "<group>";
+		};
+		75867BD51F57F408003E4A6D /* API */ = {
+			isa = PBXGroup;
+			children = (
+				75867BD61F57F43B003E4A6D /* WB_DevOpe.h */,
+				75867BD71F57F43B003E4A6D /* WB_DevOpe.m */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -280,20 +402,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75867BD41F57F059003E4A6D /* WB_TW776_SomethingModel.m in Sources */,
+				75867BD81F57F43B003E4A6D /* WB_DevOpe.m in Sources */,
 				757F913F1F3C515D00D63D55 /* Order_operaiton.m in Sources */,
+				75867BBD1F57E5F3003E4A6D /* WB_Pedometer.m in Sources */,
 				75867BAA1F4C2455003E4A6D /* ResultForBLE.m in Sources */,
 				757F913C1F3C510900D63D55 /* SDK_tools.m in Sources */,
 				757F91191F3C4D8500D63D55 /* ViewController.m in Sources */,
+				75867BB31F57E3B7003E4A6D /* WB_BLEManager.m in Sources */,
+				75867BCE1F57E8E6003E4A6D /* WB_morning_evening_Model.m in Sources */,
 				757F91421F3C518900D63D55 /* Parse_operation.m in Sources */,
+				75867BD11F57EC70003E4A6D /* WB_actionModel.m in Sources */,
 				757F91351F3C502600D63D55 /* Pedometer_device.m in Sources */,
 				757F91831F42999800D63D55 /* NSObject+FBKVOController.m in Sources */,
 				75E986261F468D800055691D /* ExceptionForSDK.m in Sources */,
 				757F91461F3C51C800D63D55 /* BLEManager.m in Sources */,
+				75867BC11F57E658003E4A6D /* WB_Scale.m in Sources */,
 				757F91161F3C4D8500D63D55 /* AppDelegate.m in Sources */,
 				757F912F1F3C4F9B00D63D55 /* Dascom_device.m in Sources */,
 				757F91131F3C4D8500D63D55 /* main.m in Sources */,
+				75867BC71F57E690003E4A6D /* WB_SW556.m in Sources */,
 				757F91811F42999800D63D55 /* FBKVOController.m in Sources */,
+				75867BB61F57E573003E4A6D /* WB_Device.m in Sources */,
 				757F91381F3C504900D63D55 /* tw776_device.m in Sources */,
+				75867BC41F57E674003E4A6D /* WB_TW776.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
