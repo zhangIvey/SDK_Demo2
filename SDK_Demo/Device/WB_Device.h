@@ -29,9 +29,9 @@ typedef enum {
  */
 @interface WB_Device : NSObject
 
-@property(nonatomic, assign)    DeviceType type;                //健康设备类型
-@property(nonatomic, copy)      NSString *modelID;              //设备型号
-@property(nonatomic, assign)    unsigned int firmwareVersion;   //设备的固件版本号
+@property(nonatomic, assign)    DeviceType      type;              //健康设备类型
+@property(nonatomic, copy)      NSString        *modelID;          //设备型号
+@property(nonatomic, assign)    unsigned int    firmwareVersion;   //设备的固件版本号
 
 
 @end

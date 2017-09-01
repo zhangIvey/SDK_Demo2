@@ -9,12 +9,32 @@
 #import "WB_BLEManager.h"
 
 @interface WB_BLEManager ()<CBCentralManagerDelegate,CBPeripheralDelegate>
+/*!
+ * @property centralManager
+ *
+ * @discussion 中心蓝牙设备管理者
+ *
+ */
+@property(nonatomic, strong) CBCentralManager *centralManager;
 
-//=====================私有变量
-@property(nonatomic, strong) CBCentralManager *centralManager; //中心蓝牙设备管理者
-@property(nonatomic, assign) BOOL isAutoConnect; //是否自动进行默认链接
+/*!
+ * @property isAutoConnect
+ *
+ * @discussion 是否自动进行默认链接
+ *
+ */
+@property(nonatomic, assign) BOOL isAutoConnect;
 
-//=====================私有方法
+
+/*!
+ * @property responseResultBlock 代码块
+ *
+ * @discussion 透传模式获取到数据之后的回调
+ *
+ */
+@property(nonatomic, copy) BLE_ResponseResult responseResultBlock;
+
+
 /**
  * 检查当前设置
  */
@@ -87,6 +107,8 @@
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error
 {
     //1526 & 1528
+    
+    [self responseResultBlock];
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error
@@ -216,7 +238,6 @@
 {
     if (![self checkPointAvailable]) {
         //不能开启
-        
         return;
     }
     //开启扫描
@@ -257,10 +278,11 @@
     
 }
 
-- (void) sendMessage:(NSString *)order ToDeviceWithUUID:(NSString *)uuidString
+- (void) sendMessage:(NSString *)order ToCharType:(NSString *)uuidString withResultBlock:(BLE_ResponseResult) resultBlock
 {
     //    NSData *orderData = [[NSData alloc] initWithBase64EncodedString:order options:NSDataBase64DecodingIgnoreUnknownCharacters];
     //    [_currentPeripheral writeValue:orderData forCharacteristic:[_currentCharacteristics objectForKey:uuidString] type:CBCharacteristicWriteWithResponse];
+    self.responseResultBlock = resultBlock;
     
 }
 

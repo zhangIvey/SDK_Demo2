@@ -31,7 +31,7 @@ typedef void (^BLE_ConnectResult)(CBPeripheral *);
  *  : 接收到蓝牙外设应答的回调方法
  *
  */
-typedef void (^BLE_ResponseResult)(CBPeripheral *);
+typedef void (^BLE_ResponseResult)();
 
 
 /*!
@@ -72,13 +72,7 @@ typedef void (^BLE_AMPMSettingResult)();
  */
 @property(nonatomic, copy) BLE_ConnectResult connectResultBlock;
 
-/*!
- * @property responseResultBlock 代码块
- *
- * @discussion 透传模式获取到数据之后的回调
- *
- */
-@property(nonatomic, copy) BLE_ResponseResult responseResultBlock;
+
 
 
 #pragma mark - 业务数据的回调block
@@ -156,5 +150,5 @@ typedef void (^BLE_AMPMSettingResult)();
  * @discussion : 向制定的特征UUID发送指令
  *
  */
-- (void) sendMessage:(NSString *)order ToCharType:(NSString *)uuidString;//发送指令
+- (void) sendMessage:(NSString *)order ToCharType:(NSString *)uuidString withResultBlock:(BLE_ResponseResult) resultBlock;//发送指令
 @end
