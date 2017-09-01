@@ -34,7 +34,7 @@
  *
  */
 - (void)stopScan;
-ADSF 
+
 /*!
  * @method  -sendOrderString
  *
