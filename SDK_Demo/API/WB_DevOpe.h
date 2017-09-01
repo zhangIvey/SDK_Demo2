@@ -38,7 +38,7 @@
 /*!
  * @method  -sendOrderString
  *
- * @discussion : 发送指令
+ * @discussion : 向蓝牙外设发送指令
  *
  */
 - (BOOL)sendOrderString:(NSString *)orderString;
