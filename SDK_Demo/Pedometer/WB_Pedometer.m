@@ -10,4 +10,11 @@
 
 @implementation WB_Pedometer
 
+
+- (void)setAMPMTimeSetting:(WB_AMPM_Setting_Action *)ampmAction
+{
+    [[WB_BLEManager shareBLEManager] sendMessage:[ampmAction toOrderString] ToCharType:0];
+    
+}
+
 @end

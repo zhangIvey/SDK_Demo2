@@ -24,16 +24,5 @@
     return self;
 }
 
-#pragma mark - super method
-/*!
- * @method 将要设置的参数转换成指令字符串
- */
-- (NSString *)toOrderString
-{
-    /*
-     ...
-     */
-    return @"指令字符串";
-}
 
 @end

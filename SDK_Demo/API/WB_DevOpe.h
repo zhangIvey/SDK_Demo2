@@ -8,7 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "WB_Device.h"
+#import "WB_BLEManager.h"
+#import "WB_AMPM_Setting_Action.h"
 
+#pragma mark - block for every-stage
+
+
+#pragma mark - class
 /*!
  * @class WB_DevOpe 对使用者来说，直接进行调用的入口
  *
@@ -17,8 +23,19 @@
  */
 @interface WB_DevOpe : NSObject
 
+@property(readonly, strong) WB_BLEManager *bleManager; //蓝牙控制器
 
-#pragma method - 蓝牙API
+#pragma mark - 初始化
+/*!
+ * @method shareOperation
+ *
+ * @discussion : 单例对象
+ *
+ */
++ (WB_DevOpe *)shareOperation;
+
+
+#pragma mark - 蓝牙 API
 /*!
  * @method startScan
  *
@@ -43,13 +60,26 @@
  */
 - (BOOL)sendOrderString:(NSString *)orderString;
 
-#pragma method - 业务API
+
+#pragma mark - 计步器业务 API
 /*!
  * @method  -groutingDevice
  *
- * @discussion : 建立成功连接之后，识别出设备是什么类型，什么型号的版本
+ * @discussion : 连接建立成功后，识别出设备是什么类型，什么型号的版本，然后进行对应型号的对象创建
  *
  */
 - (WB_Device *)groutingDevice;
+
+/*!
+ * @method  - setAMPMTime
+ *
+ * @discussion : 连接建立成功后，识别出设备是什么类型，什么型号的版本，然后进行对应型号的对象创建
+ *
+ */
+- (void)setAMPMTime:(WB_AMPM_Setting_Action *)ampmSettingAction;
+
+#pragma mark - 体重秤业务 API
+
+
 
 @end

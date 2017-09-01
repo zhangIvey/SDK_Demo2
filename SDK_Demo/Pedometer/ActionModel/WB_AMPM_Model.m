@@ -6,9 +6,9 @@
 //  Copyright © 2017年 zhangze. All rights reserved.
 //
 
-#import "WB_morning_evening_Model.h"
+#import "WB_AMPM_Model.h"
 
-@implementation WB_morning_evening_Model
+@implementation WB_AMPM_Model
 
 /*! 
  * @method 初始化方法 
@@ -24,16 +24,4 @@
     }
     return self;
 }
-
-/*!
- * @method 将要设置的参数转换成指令字符串
- */
-- (NSString *)toOrderString
-{
-    /*
-     ...
-     */
-    return @"指令字符串";
-}
-
 @end

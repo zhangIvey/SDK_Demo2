@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "WB_BLEManager.h"
 
 
 /*!

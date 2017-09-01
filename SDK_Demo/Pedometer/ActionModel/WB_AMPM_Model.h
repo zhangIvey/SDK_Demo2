@@ -7,14 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WB_actionModel.h"
 
-
-/*!
- * @class WB_morning_evening_Model
- *
- * 计步器设备 朝朝暮暮的数据模型
- */
 
 
 /*!
@@ -27,7 +20,13 @@ typedef enum {
     TIME_SETTING_EVENNING = 0>>1
 } SettingType;
 
-@interface WB_morning_evening_Model : WB_actionModel
+/*!
+ * @class WB_AMPM_Model
+ *
+ * 计步器设备 朝朝暮暮的数据模型
+ */
+
+@interface WB_AMPM_Model : NSObject
 
 @property(nonatomic, assign)   SettingType  type;       //设置朝朝或者暮暮
 @property(nonatomic, strong)   NSDate       *startTime; //开始时间

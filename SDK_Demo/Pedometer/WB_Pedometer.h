@@ -7,10 +7,9 @@
 //
 
 #import "WB_Device.h"
-#import "WB_morning_evening_Model.h"
+#import "WB_AMPM_Setting_Action.h"
 /*!
  * @class WB_Pedometer 万步网的计步器设备
- *
  *
  */
 @interface WB_Pedometer : WB_Device
@@ -18,6 +17,12 @@
 
 
 #pragma method : 计步器的通用业务
-- (BOOL)setMornings:(WB_morning_evening_Model *)mornningModel andEvenning:(WB_morning_evening_Model *)evenningModel;
+/*!
+ * @method - setAMPMTime 设置计步器的朝朝暮暮
+ *
+ */
+- (void)setAMPMTimeSetting:(WB_AMPM_Setting_Action *)ampmAction;
+
+
 
 @end
