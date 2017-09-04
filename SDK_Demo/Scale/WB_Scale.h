@@ -7,9 +7,17 @@
 //
 
 #import "WB_Device.h"
-/*
- * 万步网的体重秤设备
+/*!
+ * @class WB_Scale 万步网的体重秤设备
+ *
  */
 @interface WB_Scale : WB_Device
+
+#pragma method : 体重秤的通用业务
+/*!
+ * @method - getWeightListWithNSDate 根据时间获取某一天的体重测量数据
+ *
+ */
+- (id)getWeightListWithNSDate:(NSDate *)goalDate;
 
 @end

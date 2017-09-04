@@ -10,4 +10,9 @@
 
 @implementation WB_Scale
 
+- (id)getWeightListWithNSDate:(NSDate *)goalDate
+{
+    return @"体重数据的集合";
+}
+
 @end

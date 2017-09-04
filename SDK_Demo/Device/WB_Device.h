@@ -33,5 +33,6 @@ typedef enum {
 @property(nonatomic, copy)      NSString        *modelID;          //设备型号
 @property(nonatomic, assign)    unsigned int    firmwareVersion;   //设备的固件版本号
 
+- (void)except;
 
 @end

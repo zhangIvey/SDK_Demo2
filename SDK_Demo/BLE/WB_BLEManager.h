@@ -31,7 +31,7 @@ typedef void (^BLE_ConnectResult)(CBPeripheral *);
  *  : 接收到蓝牙外设应答的回调方法
  *
  */
-typedef void (^BLE_ResponseResult)();
+typedef void (^BLE_ResponseResult)(NSData *data);
 
 
 /*!

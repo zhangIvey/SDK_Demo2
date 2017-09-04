@@ -36,6 +36,15 @@
 
 
 #pragma mark - 蓝牙 API
+
+/*!
+ * @method scanAndConnect
+ *
+ * @discussion : 扫描并且默认链接上得实设备
+ *
+ */
+- (void)scanAndConnect;
+
 /*!
  * @method startScan
  *
@@ -68,7 +77,7 @@
  * @discussion : 连接建立成功后，识别出设备是什么类型，什么型号的版本，然后进行对应型号的对象创建
  *
  */
-- (WB_Device *)groutingDevice;
+- (WB_Device *)groutingDeviceWithTypeName:(NSString *)typeName;
 
 /*!
  * @method  - setAMPMTime
@@ -76,7 +85,7 @@
  * @discussion : 连接建立成功后，识别出设备是什么类型，什么型号的版本，然后进行对应型号的对象创建
  *
  */
-- (void)setAMPMTime:(WB_AMPM_Setting_Action *)ampmSettingAction;
+- (void)setAMPMTime:(WB_AMPM_Setting_Action *)ampmSettingAction withResult:(void(^)(BOOL isSuccess)) result;
 
 #pragma mark - 体重秤业务 API
 

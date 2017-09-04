@@ -7,9 +7,15 @@
 //
 
 #import "WB_Scale.h"
-/*
- * 万步网的体重秤 型号：SW556
+
+/*!
+ * @class WB_Scale 万步网的体重秤 型号：SW556
+ *
  */
 @interface WB_SW556 : WB_Scale
+
+
+#pragma operation : WB_SW556特有的操作
+-(void)doSW556Something;
 
 @end

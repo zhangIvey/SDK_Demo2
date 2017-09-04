@@ -10,4 +10,9 @@
 
 @implementation WB_SW556
 
+-(void)doSW556Something
+{
+    NSLog(@"doSW556Something");
+}
+
 @end
