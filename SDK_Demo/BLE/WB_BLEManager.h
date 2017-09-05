@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
+#import "Wanbu_BlueToothUtility.h"
 
 
 #pragma mark - charactics means types
@@ -18,13 +19,13 @@
  *  : 开启蓝牙扫描后的回调
  *
  */
-typedef void (^BLE_ScanResult)();
+typedef void (^BLE_ScanResult)(CBPeripheral *);
 
 /*!
  *  : 链接蓝牙设备的回调方法
  *
  */
-typedef void (^BLE_ConnectResult)(CBPeripheral *);
+typedef BOOL (^BLE_ConnectResult)(BOOL);
 
 
 /*!
@@ -33,6 +34,11 @@ typedef void (^BLE_ConnectResult)(CBPeripheral *);
  */
 typedef void (^BLE_ResponseResult)(NSData *data);
 
+/*!
+ *  : 接收到蓝牙外设应答的回调方法,携带返回值
+ *
+ */
+typedef id (^BLE_ResponseResultWithReturn)(NSData *data);
 
 /*!
  *  : 接收到设置朝朝暮暮应答的回调方法
@@ -151,4 +157,6 @@ typedef void (^BLE_AMPMSettingResult)();
  *
  */
 - (void) sendMessage:(NSString *)order ToCharType:(NSString *)uuidString withResultBlock:(BLE_ResponseResult) resultBlock;//发送指令
+
+//- (void) sendMessage:(NSString *)order ToCharType:(NSString *)uuidString withResultBlock:(BLE_ResponseResultWithReturn) resultBlock;//发送指令
 @end

@@ -13,8 +13,10 @@
 
 //subViews
 @property(nonatomic, strong) UIButton *scanButton;
-
+@property(nonatomic, strong) UILabel *stringShowLabel;
+@property(nonatomic, strong) UIButton *getDeviceTypeButton;
 //logics
+
 
 
 @end
@@ -52,7 +54,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"Demo";
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    
+    //扫描按钮
     _scanButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 10, 60, 40)];
     _scanButton.backgroundColor = [UIColor grayColor];
     [_scanButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -60,6 +62,24 @@
     
     [_scanButton addTarget:self action:@selector(scanButton_click) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_scanButton];
+    
+    
+    //获取到的信息进行展示的标签
+    _stringShowLabel = [[UILabel alloc] initWithFrame:CGRectMake(_scanButton.frame.origin.x + _scanButton.frame.size.width + 10, _scanButton.frame.origin.y, 160, 40)];
+    _stringShowLabel.backgroundColor = [UIColor purpleColor];
+    _stringShowLabel.textColor = [UIColor whiteColor];
+    [self.view addSubview:_stringShowLabel];
+    
+    
+    //获取设备型号按钮
+    _getDeviceTypeButton = [[UIButton alloc] initWithFrame:CGRectMake(_scanButton.frame.origin.x, _scanButton.frame.origin.y + _scanButton.frame.size.height + 20, 140, 40)];
+    _getDeviceTypeButton.backgroundColor = [UIColor grayColor];
+    [_getDeviceTypeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_getDeviceTypeButton setTitle:@"获取设备型号" forState:UIControlStateNormal];
+    
+    [_getDeviceTypeButton addTarget:self action:@selector(getDeviceTypeButton_click) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_getDeviceTypeButton];
+
 }
 
 #pragma mark - interact operation
@@ -70,8 +90,14 @@
 {
     
     WB_DevOpe *deviceOpe = [WB_DevOpe shareOperation];
+    [deviceOpe scanAndConnect];
     
-    
+}
+
+- (void)getDeviceTypeButton_click
+{
+    NSString *deviceType = [[WB_DevOpe shareOperation] getDeviceType];
+    _stringShowLabel.text = deviceType;
 }
 
 @end

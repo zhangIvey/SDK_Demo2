@@ -61,6 +61,16 @@
  */
 - (void)stopScan;
 
+
+/*!
+ * @method toConnectPeripheral
+ *
+ * @discussion : 指定连接哪一台设备
+ *
+ */
+- (void)toConnectPeripheral:(CBPeripheral *)peripheral;
+
+
 /*!
  * @method  -sendOrderString
  *
@@ -68,16 +78,18 @@
  *
  */
 - (BOOL)sendOrderString:(NSString *)orderString;
+#pragma mark - 得实设备的通用业务 API
 
-
-#pragma mark - 计步器业务 API
 /*!
- * @method  -groutingDevice
+ * @method  - setAMPMTime
  *
  * @discussion : 连接建立成功后，识别出设备是什么类型，什么型号的版本，然后进行对应型号的对象创建
- *
+ * 
  */
-- (WB_Device *)groutingDeviceWithTypeName:(NSString *)typeName;
+- (NSString *)getDeviceType;
+
+#pragma mark - 计步器业务 API
+
 
 /*!
  * @method  - setAMPMTime

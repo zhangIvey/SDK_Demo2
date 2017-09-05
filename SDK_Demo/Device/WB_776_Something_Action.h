@@ -7,7 +7,11 @@
 //
 
 #import "WB_actionModel.h"
-
+/*!
+ * @class WB_776_Something_Action
+ *
+ * 计步器设备 型号tw776 doSomething功能的
+ */
 @interface WB_776_Something_Action : WB_actionModel
 
 @end
