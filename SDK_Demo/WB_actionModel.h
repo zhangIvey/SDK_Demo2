@@ -19,6 +19,7 @@
 @interface WB_actionModel : NSObject
 
 /*!
+ * @method toOrderString
  * @discussion 该方法是用来将该功能设置的参数进行转化，返回硬件设备可以执行的字符串指令
  */
 - (NSString *)toOrderString;

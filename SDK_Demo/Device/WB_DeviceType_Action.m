@@ -12,7 +12,8 @@
 
 - (NSString *)toOrderString
 {
-    //1a12010000  
+    //1a12010000  : 获取设备型号的指令
+    
     return @"1a12010000";
 }
 

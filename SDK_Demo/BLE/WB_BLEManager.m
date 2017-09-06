@@ -75,14 +75,14 @@
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(nullable NSError *)error
 {
     NSLog(@"获取到特征");
-    @try {
+
         if ([[service.UUID UUIDString] isEqualToString:@"01021525-0138-4968-BD13-824F74BE866C"]) {
             self.cPeripheral = peripheral;
             self.service = service;
             for (CBCharacteristic *characteristic in service.characteristics) {
                 NSLog(@"service.uuid = %@",[service.UUID UUIDString]);
                 NSLog(@"characteristic.uuid = %@",[characteristic.UUID UUIDString]);
-                if ([[characteristic.UUID UUIDString] rangeOfString:@"1526\1528"].length > 0) {
+                if ([[characteristic.UUID UUIDString] rangeOfString:@"1526\1528"].location > 0) {
                     [self.cPeripheral setNotifyValue:YES forCharacteristic:characteristic];
                 }
                 [self.characteristicsDic setObject:characteristic forKey:[[characteristic UUID] UUIDString]];
@@ -92,11 +92,6 @@
             
     
         }
-    } @catch (NSException *exception) {
-    } @finally {
-        
-        return;
-    }
     
     
     
@@ -108,14 +103,16 @@
 {
     //1526 & 1528
     
-    NSLog(@"接收到信息 = %@",characteristic.value);
+    NSLog(@"1526 & 1528接收到信息 = %@",characteristic.value);
     self.responseResultBlock(characteristic.value);
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error
 {
     //1527 & 1529
-    
+    NSLog(@"写完数据的UUID .characteristic.uuid = %@",[characteristic.UUID UUIDString]);
+    NSLog(@"1527 & 1529接收到信息 = %@",characteristic.value);
+    self.responseResultBlock(characteristic.value);
 }
 
 #pragma mark - CBCentralManagerDelegate 代理方法
@@ -144,6 +141,7 @@
     if ([peripheral.name rangeOfString:@"DS"].length > 0) {
         NSLog(@"得实的设备");
         self.cPeripheral = peripheral;
+        self.cPeripheral.delegate = self;
         self.scanResultBlock(peripheral);
         
 //        if (_isAutoConnect) {
@@ -165,6 +163,10 @@
     //01021525-0138-4968-BD13-824F74BE866C uuid
     self.connectResultBlock(YES);
     [peripheral discoverServices:nil];
+    if (_characteristicsDic == nil) {
+        _characteristicsDic = [[NSMutableDictionary alloc] init];
+    }
+    [_characteristicsDic removeAllObjects];
 }
 
 
@@ -291,7 +293,7 @@
 
 - (void) sendMessage:(NSString *)order ToCharType:(NSString *)uuidString withResultBlock:(BLE_ResponseResult) resultBlock
 {
-    CBCharacteristic *tempCharac = (CBCharacteristic *)[_characteristicsDic objectForKey:@"uuidString"];
+    CBCharacteristic *tempCharac = (CBCharacteristic *)[self.characteristicsDic objectForKey:uuidString];
     [_cPeripheral writeValue:[Wanbu_BlueToothUtility stringToByte:order] forCharacteristic:tempCharac type:CBCharacteristicWriteWithResponse];
     self.responseResultBlock = resultBlock;
     

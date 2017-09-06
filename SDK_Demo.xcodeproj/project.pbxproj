@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		75584FD11F5E456F003C41E4 /* WB_DeviceType_Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 75584FD01F5E456F003C41E4 /* WB_DeviceType_Action.m */; };
-		75584FD41F5E745F003C41E4 /* Wanbu_BlueToothUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 75584FD31F5E745F003C41E4 /* Wanbu_BlueToothUtility.m */; };
+		75584FD41F5E745F003C41E4 /* Wanbu_BlueToothUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 75584FD31F5E745F003C41E4 /* Wanbu_BlueToothUtility.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		757F91131F3C4D8500D63D55 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 757F91121F3C4D8500D63D55 /* main.m */; };
 		757F91161F3C4D8500D63D55 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 757F91151F3C4D8500D63D55 /* AppDelegate.m */; };
 		757F91191F3C4D8500D63D55 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 757F91181F3C4D8500D63D55 /* ViewController.m */; };

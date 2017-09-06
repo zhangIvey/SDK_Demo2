@@ -17,6 +17,8 @@
     [[WB_BLEManager shareBLEManager] sendMessage:[action toOrderString] ToCharType:@"1527" withResultBlock:^(NSData *data){
         NSLog(@"检验");
         NSLog(@"拿到数据");
+        NSString *string = [Wanbu_BlueToothUtility byteToString:data];
+        NSLog(@"获取到的数据string = %@", string);
     }];
     return @"tw776";
 }
