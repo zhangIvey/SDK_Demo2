@@ -81,11 +81,12 @@
 #pragma mark - 得实设备的通用业务 API
 
 /*!
- * @method  - setAMPMTime
+ * @method  - getDeviceType
  *
  * @discussion : 连接建立成功后，识别出设备是什么类型，什么型号的版本，然后进行对应型号的对象创建
  * 
  */
+//- (void)getDeviceType;
 - (NSString *)getDeviceType;
 
 #pragma mark - 计步器业务 API
@@ -94,7 +95,7 @@
 /*!
  * @method  - setAMPMTime
  *
- * @discussion : 连接建立成功后，识别出设备是什么类型，什么型号的版本，然后进行对应型号的对象创建
+ * @discussion : 设置计步器的朝朝暮暮
  *
  */
 - (void)setAMPMTime:(WB_AMPM_Setting_Action *)ampmSettingAction withResult:(void(^)(BOOL isSuccess)) result;

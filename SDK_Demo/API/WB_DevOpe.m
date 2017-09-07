@@ -102,14 +102,14 @@
     //判断当前设备的链接状态
     _currentDevice = (WB_Device *)[[WB_Device alloc] init];
     NSString *deviceType = [_currentDevice getDeviceType];
-//    return @"tw776";
+    NSLog(@"deviceType = %@",deviceType);
     return deviceType;
 }
 
 #pragma mark - 计步器业务
 - (void)setAMPMTime:(WB_AMPM_Setting_Action *)ampmSettingAction withResult:(void(^)(BOOL isSuccess)) result;
 {
-    [_currentDevice setAMPMTimeSetting:ampmSettingAction];
+//    [_currentDevice setAMPMTimeSetting:ampmSettingAction];
 }
 
 
