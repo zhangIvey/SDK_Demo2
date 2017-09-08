@@ -11,13 +11,18 @@
 
 @implementation WB_Device
 
+<<<<<<< HEAD
 - (void)getDeviceTypeWithBlock:(Result) rblock
+=======
+- (NSString *)getDeviceType
+>>>>>>> parent of 76ddf95... demo
 {
     WB_DeviceType_Action *action = [[WB_DeviceType_Action alloc] init];
     [[WB_BLEManager shareBLEManager] sendMessage:[action toOrderString] ToCharType:@"1527" withResultBlock:^(NSData *data){
         NSLog(@"检验");
         NSLog(@"拿到数据");
         NSString *string = [Wanbu_BlueToothUtility byteToString:data];
+<<<<<<< HEAD
         NSLog(@"获取到的数据为：%@",string);
         rblock(string);
     }];
@@ -55,6 +60,11 @@
 //            NSLog(@"获取到的数据为：%@",string);
 //        }];
     
+=======
+        NSLog(@"获取到的数据string = %@", string);
+    }];
+    return @"tw776";
+>>>>>>> parent of 76ddf95... demo
 }
 
 

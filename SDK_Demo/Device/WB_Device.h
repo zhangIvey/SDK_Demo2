@@ -42,10 +42,14 @@ typedef enum {
  *
  * @discussion 从设备中读取型号
  */
+<<<<<<< HEAD
 //- (void)getDeviceTypeWithBlock:(Result) rblock;
 
 - (WB_Device * (^) (int))getDeviceType;
 
+=======
+- (NSString *)getDeviceType;
+>>>>>>> parent of 76ddf95... demo
 
 
 

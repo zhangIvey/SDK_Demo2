@@ -81,6 +81,7 @@ typedef void (^BLE_AMPMSettingResult)();
 
 
 
+
 #pragma mark - 业务数据的回调block
 /*!
  * @property responseResultBlock 代码块
@@ -158,9 +159,12 @@ typedef void (^BLE_AMPMSettingResult)();
  */
 - (void) sendMessage:(NSString *)order ToCharType:(NSString *)uuidString withResultBlock:(BLE_ResponseResult) resultBlock;//发送指令
 
+<<<<<<< HEAD
 - (WB_BLEManager * (^)(NSString *,NSString *))sendMessage;
 
 //- (void) sendMessage:(NSString *)order ToCharType:(NSString *)uuidString;
 
+=======
+>>>>>>> parent of 76ddf95... demo
 //- (void) sendMessage:(NSString *)order ToCharType:(NSString *)uuidString withResultBlock:(BLE_ResponseResultWithReturn) resultBlock;//发送指令
 @end
