@@ -41,8 +41,9 @@ typedef enum {
  *
  * @discussion 从设备中读取型号
  */
-
-- (NSString *)getDeviceType;
+//- (void)getDeviceType;
+- (void)getDeviceType:(void (^)(NSString *)) block;
+//- (WB_Device * (^)())getDeviceType;
 
 
 

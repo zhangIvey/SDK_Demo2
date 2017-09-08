@@ -11,6 +11,7 @@
 #import "WB_BLEManager.h"
 #import "WB_AMPM_Setting_Action.h"
 
+
 #pragma mark - block for every-stage
 
 
@@ -88,7 +89,9 @@
  * @discussion : 连接建立成功后，识别出设备是什么类型，什么型号的版本，然后进行对应型号的对象创建
  * 
  */
-- (NSString *)getDeviceType;
+- (void)getDeviceType:(void (^)(NSString *)) block;
+//- (NSString * (^)(NSString *, NSException *exc))getDeviceType;
+//- (NSString *)getDeviceTypeWithBlock:(NSString* (^)(NSString *, NSException *))block;
 
 #pragma mark - 计步器业务 API
 

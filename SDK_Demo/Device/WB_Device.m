@@ -10,20 +10,36 @@
 #import "WB_DeviceType_Action.h"
 
 @implementation WB_Device
+/*
+- (WB_Device * (^)())getDeviceType
+{
+    return ^(){
+        
+        WB_DeviceType_Action *action = [[WB_DeviceType_Action alloc] init];
+        [[WB_BLEManager shareBLEManager] sendMessage:[action toOrderString] ToCharType:@"1527" withResultBlock:^(NSData *data){
+            NSLog(@"检验");
+            NSLog(@"拿到数据");
+            NSString *string = [Wanbu_BlueToothUtility byteToString:data];
+            NSLog(@"获取到的数据为：%@",string);
+            self.modelID = string;
+        }];
+        return self;
+    };
+}
+*/
 
-
-- (NSString *)getDeviceType
+- (void)getDeviceType:(void (^)(NSString *)) block
 {
     WB_DeviceType_Action *action = [[WB_DeviceType_Action alloc] init];
     [[WB_BLEManager shareBLEManager] sendMessage:[action toOrderString] ToCharType:@"1527" withResultBlock:^(NSData *data){
         NSLog(@"检验");
         NSLog(@"拿到数据");
         NSString *string = [Wanbu_BlueToothUtility byteToString:data];
-
         NSLog(@"获取到的数据为：%@",string);
+        block(string);
     }];
-    return @"tw776";
 }
+
 
 //- (void)getDeviceType
 //{

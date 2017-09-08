@@ -9,6 +9,7 @@
 #import "WB_DevOpe.h"
 #import "WB_TW776.h"
 #import "WB_SW556.h"
+#import "NSObject+WB_Device.h"
 //#import <CoreBluetooth/CoreBluetooth.h>
 
 
@@ -96,23 +97,21 @@
 }
 
 #pragma mark - 得实设备通用业务
-//- (void)getDeviceType:withResult:(void(^)(BOOL isSuccess)) result
-//{
-//    //判断当前设备的链接状态
-//    _currentDevice = (WB_Device *)[[WB_Device alloc] init];
-//    [_currentDevice getDeviceTypeWithBlock:^(id typeString){
-//        NSLog(@"typeString = %@",(NSString *)typeString);
-//    
-//    }];
-//}
 
-- (NSString *)getDeviceType
+
+- (void)getDeviceType:(void (^)(NSString *)) block
 {
     //判断当前设备的链接状态
     _currentDevice = (WB_Device *)[[WB_Device alloc] init];
-    NSString *typeString = [_currentDevice getDeviceType];
-    return typeString;
+    [_currentDevice getDeviceType:^(NSString *typeString){
+        NSLog(@"WB_DevOpe typeString = %@",typeString);
+        block(typeString);
+    }];
+    
+    
 }
+
+
 
 
 

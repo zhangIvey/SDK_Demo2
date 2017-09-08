@@ -96,8 +96,10 @@
 
 - (void)getDeviceTypeButton_click
 {
-    NSString *deviceType = [[WB_DevOpe shareOperation] getDeviceType];
-    _stringShowLabel.text = deviceType;
+    [[WB_DevOpe shareOperation] getDeviceType:^(NSString *string){
+        _stringShowLabel.text = string; //更新界面
+    }];
+    
 }
 
 @end
