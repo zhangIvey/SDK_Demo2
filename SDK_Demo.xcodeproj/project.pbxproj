@@ -10,7 +10,6 @@
 		75584FD11F5E456F003C41E4 /* WB_DeviceType_Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 75584FD01F5E456F003C41E4 /* WB_DeviceType_Action.m */; };
 		75584FD41F5E745F003C41E4 /* Wanbu_BlueToothUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 75584FD31F5E745F003C41E4 /* Wanbu_BlueToothUtility.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		755850001F626078003C41E4 /* NSObject+WB_Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 75584FFF1F626078003C41E4 /* NSObject+WB_Device.m */; };
-		755850031F626496003C41E4 /* NSObject+WB_BLEManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 755850021F626496003C41E4 /* NSObject+WB_BLEManager.m */; };
 		755850061F626E51003C41E4 /* NSObject+WB_DevOpa.m in Sources */ = {isa = PBXBuildFile; fileRef = 755850051F626E51003C41E4 /* NSObject+WB_DevOpa.m */; };
 		757F91131F3C4D8500D63D55 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 757F91121F3C4D8500D63D55 /* main.m */; };
 		757F91161F3C4D8500D63D55 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 757F91151F3C4D8500D63D55 /* AppDelegate.m */; };
@@ -40,8 +39,6 @@
 		75584FD31F5E745F003C41E4 /* Wanbu_BlueToothUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wanbu_BlueToothUtility.m; sourceTree = "<group>"; };
 		75584FFE1F626078003C41E4 /* NSObject+WB_Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+WB_Device.h"; sourceTree = "<group>"; };
 		75584FFF1F626078003C41E4 /* NSObject+WB_Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WB_Device.m"; sourceTree = "<group>"; };
-		755850011F626496003C41E4 /* NSObject+WB_BLEManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+WB_BLEManager.h"; sourceTree = "<group>"; };
-		755850021F626496003C41E4 /* NSObject+WB_BLEManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WB_BLEManager.m"; sourceTree = "<group>"; };
 		755850041F626E51003C41E4 /* NSObject+WB_DevOpa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+WB_DevOpa.h"; sourceTree = "<group>"; };
 		755850051F626E51003C41E4 /* NSObject+WB_DevOpa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WB_DevOpa.m"; sourceTree = "<group>"; };
 		757F910E1F3C4D8500D63D55 /* SDK_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDK_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,8 +159,6 @@
 			children = (
 				75867BB11F57E3B7003E4A6D /* WB_BLEManager.h */,
 				75867BB21F57E3B7003E4A6D /* WB_BLEManager.m */,
-				755850011F626496003C41E4 /* NSObject+WB_BLEManager.h */,
-				755850021F626496003C41E4 /* NSObject+WB_BLEManager.m */,
 			);
 			name = BLE;
 			sourceTree = "<group>";
@@ -329,7 +324,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				75867BD41F57F059003E4A6D /* WB_TW776_SomethingModel.m in Sources */,
-				755850031F626496003C41E4 /* NSObject+WB_BLEManager.m in Sources */,
 				75867BD81F57F43B003E4A6D /* WB_DevOpe.m in Sources */,
 				75867BBD1F57E5F3003E4A6D /* WB_Pedometer.m in Sources */,
 				757F91191F3C4D8500D63D55 /* ViewController.m in Sources */,
