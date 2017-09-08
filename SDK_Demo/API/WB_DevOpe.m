@@ -106,21 +106,15 @@
 //    }];
 //}
 
-- (WB_DevOpe * (^)())getDevieType
+- (NSString *)getDeviceType
 {
-<<<<<<< HEAD
-    return ^{
-        sel
-        return self;
-    }
-=======
     //判断当前设备的链接状态
     _currentDevice = (WB_Device *)[[WB_Device alloc] init];
-    NSString *deviceType = [_currentDevice getDeviceType];
-//    return @"tw776";
-    return deviceType;
->>>>>>> parent of 76ddf95... demo
+    NSString *typeString = [_currentDevice getDeviceType];
+    return typeString;
 }
+
+
 
 #pragma mark - 计步器业务
 - (void)setAMPMTime:(WB_AMPM_Setting_Action *)ampmSettingAction withResult:(void(^)(BOOL isSuccess)) result;

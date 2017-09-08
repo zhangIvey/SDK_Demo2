@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "WB_BLEManager.h"
-#import "NSObject+WB_BLEManager.h"
 
 typedef void(^Result)(id);
 
@@ -42,14 +41,8 @@ typedef enum {
  *
  * @discussion 从设备中读取型号
  */
-<<<<<<< HEAD
-//- (void)getDeviceTypeWithBlock:(Result) rblock;
 
-- (WB_Device * (^) (int))getDeviceType;
-
-=======
 - (NSString *)getDeviceType;
->>>>>>> parent of 76ddf95... demo
 
 
 

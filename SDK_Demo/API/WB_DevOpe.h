@@ -88,14 +88,8 @@
  * @discussion : 连接建立成功后，识别出设备是什么类型，什么型号的版本，然后进行对应型号的对象创建
  * 
  */
-<<<<<<< HEAD
-//- (void)getDeviceType;
-//- (void)getDeviceType:withResult:(void(^)(BOOL isSuccess)) result;
-=======
 - (NSString *)getDeviceType;
->>>>>>> parent of 76ddf95... demo
 
-- (WB_DevOpe * (^)())getDevieType;
 #pragma mark - 计步器业务 API
 
 
