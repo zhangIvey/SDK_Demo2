@@ -11,10 +11,14 @@
 #import "WB_SW556.h"
 //#import <CoreBluetooth/CoreBluetooth.h>
 
+
+
+
 @interface WB_DevOpe ()
 
 @property(nonatomic, strong) id currentDevice;
 @property(nonatomic, strong) CBPeripheral *currentPeripheral;
+
 
 @end
 
@@ -87,23 +91,27 @@
  */
 - (WB_Device *)groutingDeviceWithTypeName:(NSString *)typeName
 {
-    
-//    if ([typeName isEqualToString:@"tw776"]) {
-//        _currentDevice = (WB_TW776 *)[[WB_TW776 alloc] init];
-//    }else if ([typeName isEqualToString:@"SW556"]){
-//        _currentDevice = (WB_TW776 *)[[WB_TW776 alloc] init];
-//    }
+
     return _currentDevice;
 }
 
 #pragma mark - 得实设备通用业务
-- (NSString *)getDeviceType
+//- (void)getDeviceType:withResult:(void(^)(BOOL isSuccess)) result
+//{
+//    //判断当前设备的链接状态
+//    _currentDevice = (WB_Device *)[[WB_Device alloc] init];
+//    [_currentDevice getDeviceTypeWithBlock:^(id typeString){
+//        NSLog(@"typeString = %@",(NSString *)typeString);
+//    
+//    }];
+//}
+
+- (WB_DevOpe * (^)())getDevieType
 {
-    //判断当前设备的链接状态
-    _currentDevice = (WB_Device *)[[WB_Device alloc] init];
-    NSString *deviceType = [_currentDevice getDeviceType];
-    NSLog(@"deviceType = %@",deviceType);
-    return deviceType;
+    return ^{
+        sel
+        return self;
+    }
 }
 
 #pragma mark - 计步器业务

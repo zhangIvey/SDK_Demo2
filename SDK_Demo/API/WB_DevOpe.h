@@ -24,6 +24,7 @@
 @interface WB_DevOpe : NSObject
 
 @property(readonly, strong) WB_BLEManager *bleManager; //蓝牙控制器
+@property(nonatomic, strong) NSString *typeString;
 
 #pragma mark - 初始化
 /*!
@@ -78,6 +79,7 @@
  *
  */
 - (BOOL)sendOrderString:(NSString *)orderString;
+
 #pragma mark - 得实设备的通用业务 API
 
 /*!
@@ -87,8 +89,9 @@
  * 
  */
 //- (void)getDeviceType;
-- (NSString *)getDeviceType;
+//- (void)getDeviceType:withResult:(void(^)(BOOL isSuccess)) result;
 
+- (WB_DevOpe * (^)())getDevieType;
 #pragma mark - 计步器业务 API
 
 

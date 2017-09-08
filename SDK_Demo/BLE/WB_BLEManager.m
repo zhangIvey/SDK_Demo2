@@ -104,7 +104,8 @@
     //1526 & 1528
     
     NSLog(@"1526 & 1528接收到信息 = %@",characteristic.value);
-    self.responseResultBlock(characteristic.value);
+    self.currentResultData = characteristic.value;
+//    self.responseResultBlock(characteristic.value);
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error
@@ -305,6 +306,16 @@
 //    [_cPeripheral writeValue:[Wanbu_BlueToothUtility stringToByte:order] forCharacteristic:tempCharac type:CBCharacteristicWriteWithResponse];
 //    
 //}
+
+- (WB_BLEManager * (^)(NSString *, NSString *))sendMessage
+{
+    __block CBPeripheral *Peripheral = _cPeripheral;
+    return ^(NSString *orderString, NSString *charID){
+        CBCharacteristic *tempCharac = (CBCharacteristic *)[self.characteristicsDic objectForKey:charID];
+        [Peripheral writeValue:[Wanbu_BlueToothUtility stringToByte:orderString] forCharacteristic:tempCharac type:CBCharacteristicWriteWithResponse];
+        return self;
+    };
+}
 
 
 @end

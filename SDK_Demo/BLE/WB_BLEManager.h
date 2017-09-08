@@ -60,6 +60,7 @@ typedef void (^BLE_AMPMSettingResult)();
 @property(nonatomic, strong) CBPeripheral *cPeripheral;
 @property(nonatomic, strong) CBService *service;
 @property(nonatomic, strong) NSMutableDictionary *characteristicsDic;
+@property(nonatomic, strong) NSData *currentResultData; //当前指令的返回数据。
 
 #pragma mark - 蓝牙功能的block
 /*!
@@ -156,6 +157,8 @@ typedef void (^BLE_AMPMSettingResult)();
  *
  */
 - (void) sendMessage:(NSString *)order ToCharType:(NSString *)uuidString withResultBlock:(BLE_ResponseResult) resultBlock;//发送指令
+
+- (WB_BLEManager * (^)(NSString *,NSString *))sendMessage;
 
 //- (void) sendMessage:(NSString *)order ToCharType:(NSString *)uuidString;
 

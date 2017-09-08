@@ -11,7 +11,7 @@
 
 @implementation WB_Device
 
-- (void)getDeviceType
+- (void)getDeviceTypeWithBlock:(Result) rblock
 {
     WB_DeviceType_Action *action = [[WB_DeviceType_Action alloc] init];
     [[WB_BLEManager shareBLEManager] sendMessage:[action toOrderString] ToCharType:@"1527" withResultBlock:^(NSData *data){
@@ -19,8 +19,42 @@
         NSLog(@"拿到数据");
         NSString *string = [Wanbu_BlueToothUtility byteToString:data];
         NSLog(@"获取到的数据为：%@",string);
+        rblock(string);
     }];
+}
 
+//- (void)getDeviceType
+//{
+//    WB_DeviceType_Action *action = [[WB_DeviceType_Action alloc] init];
+//    [[WB_BLEManager shareBLEManager] sendMessage:[action toOrderString] ToCharType:@"1527" withResultBlock:^(NSData *data){
+//        NSLog(@"检验");
+//        NSLog(@"拿到数据");
+//        NSString *string = [Wanbu_BlueToothUtility byteToString:data];
+//        NSLog(@"获取到的数据为：%@",string);
+//    }];
+//
+//}
+
+- (WB_Device * (^) (int))getDeviceType
+{
+    return ^(int number){
+        WB_DeviceType_Action *action = [[WB_DeviceType_Action alloc] init];
+        NSString *orderString = [action toOrderString];
+        NSData *typeData = [NSObject sendMessageWithblock:^(WB_BLEManager *bleManager){
+            bleManager.sendMessage(orderString, @"1527");
+        }];
+        NSString *string = [Wanbu_BlueToothUtility byteToString:typeData];
+        NSLog(@"获取到的数据为：%@",string);
+        self.modelID = string;
+        return self;
+    };
+//        [[WB_BLEManager shareBLEManager] sendMessage:[action toOrderString] ToCharType:@"1527" withResultBlock:^(NSData *data){
+//            NSLog(@"检验");
+//            NSLog(@"拿到数据");
+//            NSString *string = [Wanbu_BlueToothUtility byteToString:data];
+//            NSLog(@"获取到的数据为：%@",string);
+//        }];
+    
 }
 
 
