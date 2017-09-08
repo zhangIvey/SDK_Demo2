@@ -8,9 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "WB_BLEManager.h"
-#import "NSObject+WB_BLEManager.h"
 
-typedef void(^Result)(id);
 
 /*!
  * @enum DeviceType 万步网健康设备类型，比如：计步器，血压计，血糖仪，体温计等等
@@ -35,17 +33,19 @@ typedef enum {
 @property(nonatomic, copy)      NSString        *modelID;          //设备型号
 @property(nonatomic, assign)    unsigned int    firmwareVersion;   //设备的固件版本号
 
-@property(nonatomic, copy) Result resultBlock;
-
 /*!
  * @method WB_Device 万步网健康设备
  *
  * @discussion 从设备中读取型号
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 //- (void)getDeviceTypeWithBlock:(Result) rblock;
 
 - (WB_Device * (^) (int))getDeviceType;
+=======
+- (void)getDeviceType:(void(^)(NSString *));
+>>>>>>> parent of 6f3b657... demo
 
 =======
 - (NSString *)getDeviceType;

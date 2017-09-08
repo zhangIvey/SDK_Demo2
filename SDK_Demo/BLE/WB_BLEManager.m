@@ -104,8 +104,7 @@
     //1526 & 1528
     
     NSLog(@"1526 & 1528接收到信息 = %@",characteristic.value);
-    self.currentResultData = characteristic.value;
-//    self.responseResultBlock(characteristic.value);
+    self.responseResultBlock(characteristic.value);
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didWriteValueForCharacteristic:(CBCharacteristic *)characteristic error:(nullable NSError *)error
@@ -302,6 +301,7 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 - (WB_BLEManager * (^)(NSString *, NSString *))sendMessage
 {
     __block CBPeripheral *Peripheral = _cPeripheral;
@@ -348,6 +348,8 @@
     return bytes;
 }
 >>>>>>> parent of 76ddf95... demo
+=======
+>>>>>>> parent of 6f3b657... demo
 
 @end
 
