@@ -98,7 +98,6 @@
 
 #pragma mark - 得实设备通用业务
 
-
 - (void)getDeviceType:(void (^)(NSString *)) block
 {
     //判断当前设备的链接状态

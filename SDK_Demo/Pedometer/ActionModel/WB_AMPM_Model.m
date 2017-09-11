@@ -14,7 +14,7 @@
  * @method 初始化方法 
  *
  */
-- (instancetype)initWithType:(SettingType) type withStartTime:(NSDate *)startTime withEndTime:(NSDate *)endTime
+- (instancetype)initWithType:(SettingType) type withStartTime:(NSString *)startTime withEndTime:(NSString *)endTime
 {
     self = [super init];
     if (self) {

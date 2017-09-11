@@ -15,6 +15,7 @@
 @property(nonatomic, strong) UIButton *scanButton;
 @property(nonatomic, strong) UILabel *stringShowLabel;
 @property(nonatomic, strong) UIButton *getDeviceTypeButton;
+@property(nonatomic, strong) UIButton *setAMPMButton;
 //logics
 
 
@@ -80,6 +81,13 @@
     [_getDeviceTypeButton addTarget:self action:@selector(getDeviceTypeButton_click) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_getDeviceTypeButton];
 
+    //设置设备的朝三暮四按钮
+    _setAMPMButton = [[UIButton alloc] initWithFrame:CGRectMake(_getDeviceTypeButton.frame.origin.x, _getDeviceTypeButton.frame.origin.y + _getDeviceTypeButton.frame.size.height + 20, 140, 40)];
+    _setAMPMButton.backgroundColor = [UIColor grayColor];
+    [_setAMPMButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_setAMPMButton setTitle:@"设置朝朝暮暮" forState:UIControlStateNormal];
+    [_setAMPMButton addTarget:self action:@selector(setAMPMButton_click) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_setAMPMButton];
 }
 
 #pragma mark - interact operation
@@ -101,5 +109,23 @@
     }];
     
 }
+
+- (void)setAMPMButton_click
+{
+    WB_AMPM_Model *amModel = [[WB_AMPM_Model alloc] initWithType:TIME_SETTING_MORNNING withStartTime:@"5" withEndTime:@"9"];
+    
+    WB_AMPM_Model *pmModel = [[WB_AMPM_Model alloc] initWithType:TIME_SETTING_EVENNING withStartTime:@"20" withEndTime:@"23"];
+    
+    WB_AMPM_Setting_Action *action = [[WB_AMPM_Setting_Action alloc] initWithAM:amModel withPM:pmModel];
+    [[WB_DevOpe shareOperation] setAMPMTime:action withResult:^(BOOL isSuccess){
+        if (isSuccess) {
+            NSLog(@"设置成功");
+        }else{
+            NSLog(@"设置失败");
+        }
+    }];
+}
+
+
 
 @end
