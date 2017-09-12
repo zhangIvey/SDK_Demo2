@@ -11,7 +11,7 @@
 /*!
  * @class WB_AMPM_Setting_Action
  *
- * 计步器设备 朝朝暮暮的设置功能
+ * @discussion 计步器设备 朝朝暮暮的设置功能
  */
 @interface WB_AMPM_Setting_Action : WB_actionModel
 @property(nonatomic, strong) WB_AMPM_Model *amModel;

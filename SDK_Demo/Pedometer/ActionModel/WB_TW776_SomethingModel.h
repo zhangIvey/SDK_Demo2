@@ -11,7 +11,7 @@
 /*!
  * @class WB_morning_evening_Model
  *
- * 计步器设备 朝朝暮暮的数据模型
+ * @discussion 计步器设备 朝朝暮暮的数据模型
  */
 @interface WB_TW776_SomethingModel : NSObject
 

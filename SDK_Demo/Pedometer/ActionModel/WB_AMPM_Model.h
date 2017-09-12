@@ -23,19 +23,19 @@ typedef enum {
 /*!
  * @class WB_AMPM_Model
  *
- * 计步器设备 朝朝暮暮的数据模型
+ * @discussion 计步器设备 朝朝暮暮的数据模型
  */
 
 @interface WB_AMPM_Model : NSObject
 
 @property(nonatomic, assign)    SettingType     type;       //设置朝朝或者暮暮
-@property(nonatomic, copy)      NSString       *startTime; //开始时间
-@property(nonatomic, copy)      NSString       *endTime;   //结束时间
+@property(nonatomic, copy)      NSString       *startTime;  //开始时间
+@property(nonatomic, copy)      NSString       *endTime;    //结束时间
 
 /*!
  * @method initWithType:withStartTime:withEndTime;
  *
- * 计步器设备 根据朝朝暮暮的设置类型和起止时间初始化
+ * @discussion 计步器设备 根据朝朝暮暮的设置类型和起止时间初始化
  */
 - (instancetype)initWithType:(SettingType) type withStartTime:(NSString *)startTime withEndTime:(NSString *)endTime;
 

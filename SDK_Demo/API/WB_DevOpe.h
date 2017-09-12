@@ -14,7 +14,6 @@
 
 #pragma mark - block for every-stage
 
-
 #pragma mark - class
 /*!
  * @class WB_DevOpe 对使用者来说，直接进行调用的入口
@@ -84,20 +83,19 @@
 #pragma mark - 得实设备的通用业务 API
 
 /*!
- * @method  - setAMPMTime
+ * @method  - getDeviceType:
  *
  * @discussion : 连接建立成功后，识别出设备是什么类型，什么型号的版本，然后进行对应型号的对象创建
  * 
  */
 - (void)getDeviceType:(void (^)(NSString *)) block;
-//- (NSString * (^)(NSString *, NSException *exc))getDeviceType;
-//- (NSString *)getDeviceTypeWithBlock:(NSString* (^)(NSString *, NSException *))block;
+
 
 #pragma mark - 计步器业务 API
 
 
 /*!
- * @method  - setAMPMTime
+ * @method  - setAMPMTime：ampmSettingAction:withResult
  *
  * @discussion : 连接建立成功后，识别出设备是什么类型，什么型号的版本，然后进行对应型号的对象创建
  *

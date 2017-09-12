@@ -26,7 +26,7 @@ typedef enum {
 /*!
  * @class WB_Device 万步网健康设备
  *
- *
+ * @discussion 万步网健康设备的基类
  */
 @interface WB_Device : NSObject
 
