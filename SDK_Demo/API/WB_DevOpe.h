@@ -21,7 +21,7 @@
  * @discussion 对外提供API,对内进行各层的调度
  * 
  */
-@interface WB_DevOpe : NSObject
+@interface WB_DevOpe : NSObject <WB_deviceDelegate>
 
 @property(readonly, strong) WB_BLEManager *bleManager; //蓝牙控制器
 @property(nonatomic, strong) NSString *typeString;

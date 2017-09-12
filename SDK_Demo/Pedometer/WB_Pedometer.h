@@ -21,7 +21,7 @@
  * @method - setAMPMTimeSetting:
  * @discussion 设置计步器的朝朝暮暮
  */
-- (void)setAMPMTimeSetting:(WB_AMPM_Setting_Action *)ampmAction;
+- (void)setAMPMTimeSetting:(WB_AMPM_Setting_Action *)ampmAction withBlock:(void (^)(BOOL isSuccess)) block;
 
 
 

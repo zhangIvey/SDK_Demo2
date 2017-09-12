@@ -98,7 +98,7 @@
     //1526 & 1528
     
     NSLog(@"1526 & 1528接收到信息 = %@",characteristic.value);
-//    self.currentResultData = characteristic.value;
+//    self.responseResultBlock(characteristic.value);
     self.responseResultBlock(characteristic.value);
 }
 
@@ -107,7 +107,9 @@
     //1527 & 1529
     NSLog(@"写完数据的UUID .characteristic.uuid = %@",[characteristic.UUID UUIDString]);
     NSLog(@"1527 & 1529接收到信息 = %@",characteristic.value);
-    self.responseResultBlock(characteristic.value);
+    
+    
+    
 }
 
 #pragma mark - CBCentralManagerDelegate 代理方法
@@ -138,13 +140,6 @@
         self.cPeripheral = peripheral;
         self.cPeripheral.delegate = self;
         self.scanResultBlock(peripheral);
-        
-//        if (_isAutoConnect) {
-//            //直接发起链接
-//            NSLog(@"self.cPeripheral = %@",peripheral);
-//            [self toConnnect:self.cPeripheral];
-//            [self stopScan];
-//        }
         
     }
 }
@@ -277,14 +272,6 @@
 {
     
 }
-
-//- (void) sendMessage:(NSString *)order ToCharType:(NSString *)uuidString withResultBlock:(BLE_ResponseResultWithReturn) resultBlock
-//{
-//    //    NSData *orderData = [[NSData alloc] initWithBase64EncodedString:order options:NSDataBase64DecodingIgnoreUnknownCharacters];
-//    //    [_currentPeripheral writeValue:orderData forCharacteristic:[_currentCharacteristics objectForKey:uuidString] type:CBCharacteristicWriteWithResponse];
-//    self.responseResultBlock = resultBlock;
-//    
-//}
 
 - (void) sendMessage:(NSString *)order ToCharType:(NSString *)uuidString withResultBlock:(BLE_ResponseResult) resultBlock
 {

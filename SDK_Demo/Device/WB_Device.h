@@ -8,6 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "WB_BLEManager.h"
+#import "WB_Exception.h"
+
+/*!
+ * @protocol WB_deviceDelegate
+ *
+ * @discussion 万步网健康设备协议类
+ */
+@protocol WB_deviceDelegate <NSObject>
+
+- (id)receiveException:(WB_Exception *)exception;
+
+@end
+
 
 typedef void(^Result)(id);
 
@@ -36,13 +49,20 @@ typedef enum {
 
 @property(nonatomic, copy) Result resultBlock;
 
+@property(nonatomic, assign) id<WB_deviceDelegate> delegate;        //代理
+
 /*!
- * @method WB_Device 万步网健康设备
+ * @method getDeviceType
  *
  * @discussion 从设备中读取型号
  */
 - (void)getDeviceType:(void (^)(NSString *)) block;
 
 
-
+/*!
+ * @method validationForResponse 万步网健康设备
+ *
+ * @discussion 校验返回数据是否通过
+ */
+- (BOOL)validationForResponse:(NSData *)data;
 @end

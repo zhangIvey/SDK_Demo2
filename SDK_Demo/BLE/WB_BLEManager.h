@@ -16,7 +16,7 @@
 
 #pragma mark - block for every-stage
 /*!
- *  : 开启蓝牙扫描后的回调
+ *   开启蓝牙扫描后的回调
  *
  */
 typedef void (^BLE_ScanResult)(CBPeripheral *);
