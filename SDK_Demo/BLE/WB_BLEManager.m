@@ -98,7 +98,6 @@
     //1526 & 1528
     
     NSLog(@"1526 & 1528接收到信息 = %@",characteristic.value);
-//    self.responseResultBlock(characteristic.value);
     self.responseResultBlock(characteristic.value);
 }
 

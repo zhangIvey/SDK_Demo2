@@ -13,9 +13,9 @@
  * @discussion 异常类，用来汇报异常信息
  *
  */
-@interface WB_Exception : NSException
+@interface WB_Exception : NSObject
 
-@property(nonatomic, strong) NSString *warnningString; //提醒信息
+@property(nonatomic, copy) NSString *warnningString; //提醒信息
 
 
 @end

@@ -17,7 +17,7 @@
  */
 @protocol WB_deviceDelegate <NSObject>
 
-- (id)receiveException:(WB_Exception *)exception;
+- (void)receiveException:(WB_Exception *)exception;
 
 @end
 
@@ -43,13 +43,13 @@ typedef enum {
  */
 @interface WB_Device : NSObject
 
-@property(nonatomic, assign)    DeviceType      type;              //健康设备类型
-@property(nonatomic, copy)      NSString        *modelID;          //设备型号
-@property(nonatomic, assign)    unsigned int    firmwareVersion;   //设备的固件版本号
+@property(nonatomic, assign)    DeviceType              type;              //健康设备类型
+@property(nonatomic, copy)      NSString                *modelID;          //设备型号
+@property(nonatomic, assign)    unsigned int            firmwareVersion;   //设备的固件版本号
 
-@property(nonatomic, copy) Result resultBlock;
+@property(nonatomic, copy)      Result                  resultBlock;
 
-@property(nonatomic, assign) id<WB_deviceDelegate> delegate;        //代理
+@property(nonatomic, assign)    id<WB_deviceDelegate>   delegate;        //代理
 
 /*!
  * @method getDeviceType

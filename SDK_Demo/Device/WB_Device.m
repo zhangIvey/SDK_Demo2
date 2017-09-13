@@ -9,9 +9,23 @@
 #import "WB_Device.h"
 #import "WB_DeviceType_Action.h"
 
+@interface WB_Device ()
+
+@property(nonatomic, strong)    WB_Exception            *exception; //异常
+
+@end
+
 @implementation WB_Device
 
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _exception = [[WB_Exception alloc] init];
+    }
+    return self;
+}
 
 
 - (void)getDeviceType:(void (^)(NSString *)) block
@@ -20,14 +34,12 @@
     [[WB_BLEManager shareBLEManager] sendMessage:[action toOrderString] ToCharType:@"1527" withResultBlock:^(NSData *data){
         NSLog(@"拿到数据");
         NSLog(@"检验");
-//        if (![self validationForResponse:data]){
-        if ( /* DISABLES CODE */ (1) == 0){
-            
+        if (![self validationForResponse:data]){
             //异常了，要进行收集和反馈
             if (_delegate && [_delegate respondsToSelector:@selector(receiveException:)]) {
-                WB_Exception *exception = [[WB_Exception alloc] init];
-                exception.warnningString = @"抱歉，校验时发现错误";
-                [_delegate receiveException:exception];
+                _exception.warnningString = [NSString stringWithFormat:@"%@抱歉，校验时发现错误",self.class];
+                NSLog(@"exception.warnningString = %@",_exception.warnningString);
+                [_delegate receiveException:_exception];
             }
             
         }else{

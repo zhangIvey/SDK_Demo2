@@ -118,18 +118,15 @@
 #pragma mark - 计步器业务
 - (void)setAMPMTime:(WB_AMPM_Setting_Action *)ampmSettingAction withResult:(void(^)(BOOL isSuccess)) result;
 {
-    
     NSLog(@"设备类型： %@",[_currentDevice modelID]);
     [_currentDevice setAMPMTimeSetting:ampmSettingAction withBlock:result];
 }
 
 #pragma mark - 数据异常监听
-- (id)receiveException:(WB_Exception *)exception
+- (void)receiveException:(WB_Exception *)exception
 {
-    NSLog(@"检测出了一个异常");
-    
     NSLog(@"提醒信息 ： %@",exception.warnningString);
-    return nil;
+    NSLog(@"检测出了一个异常");
 }
 
 
