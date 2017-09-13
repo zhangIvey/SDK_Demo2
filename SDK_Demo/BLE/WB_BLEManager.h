@@ -27,13 +27,6 @@ typedef void (^BLE_ScanResult)(CBPeripheral *);
  */
 typedef BOOL (^BLE_ConnectResult)(BOOL);
 
-
-/*!
- *  : 接收到蓝牙外设应答的回调方法
- *
- */
-typedef void (^BLE_ResponseResult)(NSData *data);
-
 /*!
  *  : 接收到蓝牙外设应答的回调方法,携带返回值
  *
@@ -46,13 +39,31 @@ typedef id (^BLE_ResponseResultWithReturn)(NSData *data);
  */
 typedef void (^BLE_AMPMSettingResult)();
 
+/*!
+ *  : 接收到蓝牙外设应答的回调方法
+ *
+ */
+typedef void (^BLE_ResponseResult)(NSData *data);
+
+
+
+
+
+
 #pragma mark - protocol
 
 @protocol WB_BLEManagerDelegate <NSObject>
-
+/*!
+ * @method receiveException
+ *
+ * @discussion 反馈异常
+ */
 - (void)receviedAbnormal:(NSString *)message;
 
 @end
+
+
+
 
 #pragma mark - class for blueTooth
 /*!

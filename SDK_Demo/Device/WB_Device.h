@@ -16,7 +16,11 @@
  * @discussion 万步网健康设备协议类
  */
 @protocol WB_deviceDelegate <NSObject>
-
+/*!
+ * @method receiveException
+ *
+ * @discussion 反馈异常
+ */
 - (void)receiveException:(WB_Exception *)exception;
 
 @end
@@ -50,6 +54,8 @@ typedef enum {
 @property(nonatomic, copy)      Result                  resultBlock;
 
 @property(nonatomic, assign)    id<WB_deviceDelegate>   delegate;        //代理
+
+@property(nonatomic, strong)    WB_Exception            *exception; //异常
 
 /*!
  * @method getDeviceType

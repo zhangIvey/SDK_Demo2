@@ -9,11 +9,6 @@
 #import "WB_Device.h"
 #import "WB_DeviceType_Action.h"
 
-@interface WB_Device ()
-
-@property(nonatomic, strong)    WB_Exception            *exception; //异常
-
-@end
 
 @implementation WB_Device
 
@@ -32,8 +27,8 @@
 {
     WB_DeviceType_Action *action = [[WB_DeviceType_Action alloc] init];
     [[WB_BLEManager shareBLEManager] sendMessage:[action toOrderString] ToCharType:@"1527" withResultBlock:^(NSData *data){
-        NSLog(@"拿到数据");
-        NSLog(@"检验");
+        //...拿到数据
+        //...检验
         if (![self validationForResponse:data]){
             //异常了，要进行收集和反馈
             if (_delegate && [_delegate respondsToSelector:@selector(receiveException:)]) {
@@ -41,7 +36,7 @@
                 NSLog(@"exception.warnningString = %@",_exception.warnningString);
                 [_delegate receiveException:_exception];
             }
-            
+            block(nil);
         }else{
             NSString *string = [Wanbu_BlueToothUtility byteToString:data];
             NSLog(@"获取到的数据为：%@",string);

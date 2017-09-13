@@ -14,7 +14,12 @@
 
 
 @protocol WB_DevOpeDelegate <NSObject>
-
+/*!
+ * @method  - recevicedAbnormal:
+ *
+ * @discussion : 制定的事务，出现异常或者失败会都在此进行接收和反馈；
+ * @param message : 要反馈的信息。比如：获取“设备型号失败”。
+ */
 - (void)recevicedAbnormal:(NSString *)message;
 
 @end
@@ -26,11 +31,11 @@
  * @discussion 对外提供API,对内进行各层的调度
  * 
  */
-@interface WB_DevOpe : NSObject <WB_deviceDelegate>
+@interface WB_DevOpe : NSObject 
 
-@property(readonly, strong)     WB_BLEManager           *bleManager; //蓝牙控制器
+
 @property(nonatomic, assign)    id<WB_DevOpeDelegate>   delegate;
-@property(nonatomic, strong)    WB_Device      *currentDevice;
+@property(nonatomic, assign)    BOOL                    workLogs; //是否记录日志
 
 #pragma mark - 初始化
 /*!
@@ -78,16 +83,6 @@
 - (void)toConnectPeripheral:(CBPeripheral *)peripheral;
 
 
-/*!
- * @method  -sendOrderString
- *
- * @discussion : 向蓝牙外设发送指令
- *
- */
-- (BOOL)sendOrderString:(NSString *)orderString;
-
-
-- (void)groutingDevice;
 
 #pragma mark - 得实设备的通用业务 API
 
@@ -95,7 +90,7 @@
  * @method  - getDeviceType:
  *
  * @discussion : 连接建立成功后，识别出设备是什么类型，什么型号的版本，然后进行对应型号的对象创建
- * 
+ * @param block (^)(NSString *)) block 中的传入的字符串就是设备的类型， 比如：TW776, 如果没有取到设备的类型，字符串为nil,同时在recevicedAbnormal 会受到消息。
  */
 - (void)getDeviceType:(void (^)(NSString *)) block;
 

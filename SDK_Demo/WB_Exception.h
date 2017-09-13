@@ -13,11 +13,15 @@
  * @discussion 异常类，用来汇报异常信息
  *
  */
+
+
 @interface WB_Exception : NSObject
 
-@property(nonatomic, copy) NSString *warnningString; //提醒信息
-@property(nonatomic, copy) NSString *actionName;
-@property(nonatomic, copy) NSString *method;
+@property(nonatomic, copy)  NSString *warnningString; //提醒信息
+@property(nonatomic, copy)  NSString *actionName;
+@property(nonatomic, copy)  NSString *method;
+
+
 
 /*!
  * @method writeLogs: andMethod:andNotes:

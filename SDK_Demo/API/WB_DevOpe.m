@@ -12,11 +12,10 @@
 
 
 
-@interface WB_DevOpe () <WB_BLEManagerDelegate>
-
-
+@interface WB_DevOpe () <WB_BLEManagerDelegate,WB_deviceDelegate>
 @property(nonatomic, strong) CBPeripheral   *currentPeripheral;
-
+@property(readonly, strong)     WB_BLEManager           *bleManager; //蓝牙控制器
+@property(nonatomic, strong)    WB_Device      *currentDevice;
 
 @end
 
@@ -100,6 +99,7 @@
         if ([typeName isEqualToString:@"TW776"]) {
             _currentDevice = [[WB_TW776 alloc] init];
         }
+        _currentDevice = [[WB_TW776 alloc] init];
     }];
     //固件版本号
 //    [self getModelID:^(NSString *modelString){
@@ -116,26 +116,41 @@
 - (void)getDeviceType:(void (^)(NSString *)) block
 {
     //判断当前设备的链接状态
-    WB_Device *temp = [[WB_Device alloc] init];
-    __block WB_Device *device = temp;
+   _currentDevice = [[WB_Device alloc] init];
+    _currentDevice.delegate = self;
+    __block WB_Device *device = _currentDevice;
     [device getDeviceType:^(NSString *typeString){
         NSLog(@"WB_DevOpe typeString = %@",typeString);
+        device.modelID = typeString;
+        [self resetDeviceObject:typeString];
         block(typeString);
     }];
+}
+
+/*!
+ * @method  resetDeviceObject
+ * @discussion 再获取到设置的具体型号之后，重新device初始化
+ */
+- (void)resetDeviceObject:(NSString *)string
+{
+    if ([string isEqualToString:@"TW776"]) {
+        _currentDevice = [[WB_TW776 alloc] init];
+    }
+    _currentDevice = [[WB_TW776 alloc] init];
+    _currentDevice.delegate = self;
+    _currentDevice.modelID = string;
 }
 
 
 #pragma mark - 计步器业务
 - (void)setAMPMTime:(WB_AMPM_Setting_Action *)ampmSettingAction withResult:(void(^)(BOOL isSuccess)) result;
 {
-    NSLog(@"设备类型： %@",[_currentDevice modelID]);
     
     id pedo = (id)_currentDevice;
-    NSLog(@"设备类型： %@",[pedo modelID]);
     [pedo setAMPMTimeSetting:ampmSettingAction withBlock:result];
 }
 
-#pragma mark - 数据异常监听
+#pragma mark - WB_deviceDelegate
 - (void)receiveException:(WB_Exception *)exception
 {
     NSLog(@"提醒信息 ： %@",exception.warnningString);
@@ -146,6 +161,7 @@
     }
 }
 
+#pragma mark - WB_BLEManagerDelegate
 - (void)receviedAbnormal:(NSString *)message
 {
     if (_delegate) {

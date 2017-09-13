@@ -103,18 +103,14 @@
     
 }
 
-- (void)recevicedAbnormal:(NSString *)message
-{
-    //[Toast show:@"失败的信息"];
-}
+
 
 - (void)getDeviceTypeButton_click
 {
-//    [[WB_DevOpe shareOperation] getDeviceType:^(NSString *string){
-//        _stringShowLabel.text = string; //更新界面
-//    }];
+    [[WB_DevOpe shareOperation] getDeviceType:^(NSString *string){
+        _stringShowLabel.text = string; //更新界面
+    }];
     
-    [[WB_DevOpe shareOperation] groutingDevice];
     
 }
 
@@ -134,6 +130,12 @@
     }];
 }
 
+#pragma mark - 实现的代理方法
+- (void)recevicedAbnormal:(NSString *)message
+{
+    [[WB_DevOpe shareOperation] setWorkLogs:YES];
+    //[Toast show:@"失败的信息"];
+}
 
 
 @end

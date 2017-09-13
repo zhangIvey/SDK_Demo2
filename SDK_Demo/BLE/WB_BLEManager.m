@@ -86,6 +86,7 @@
 }
 
 
+
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(nullable NSError *)error
 {
     NSLog(@"获取到特征");
@@ -161,7 +162,6 @@
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
     NSLog(@"和外设链接成功");
-    //01021525-0138-4968-BD13-824F74BE866C uuid
     self.connectResultBlock(YES);
     [peripheral discoverServices:nil];
     if (_characteristicsDic == nil) {
