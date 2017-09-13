@@ -7,6 +7,7 @@
 //
 
 #import "WB_BLEManager.h"
+#import "WB_Exception.h"
 
 @interface WB_BLEManager ()<CBCentralManagerDelegate,CBPeripheralDelegate>
 /*!
@@ -34,11 +35,14 @@
  */
 @property(nonatomic, copy) BLE_ResponseResult responseResultBlock;
 
+@property(nonatomic, strong) WB_Exception *exception;
 
 /**
  * 检查当前设置
  */
 - (BOOL) checkPointAvailable;
+
+
 
 @end
 
@@ -60,6 +64,16 @@
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(nullable NSError *)error
 {
     NSLog(@"发现服务");
+   
+    if (error) {
+        [WB_Exception writeLogs:NSStringFromClass(self.class) andMethod:NSStringFromSelector(@selector(peripheral:didDiscoverServices:)) andNotes:@"需要备注信息"];
+        if (_delegate) {
+            [_delegate receviedAbnormal:@"要反馈用户的失败信息！"];
+        }
+        return;
+    }
+    
+    
     for (CBService *service in peripheral.services) {
         NSLog(@"service UUID = %@",[service.UUID UUIDString]);
         if ([[service.UUID UUIDString] isEqualToString:@"01021525-0138-4968-BD13-824F74BE866C"]) {
@@ -75,7 +89,6 @@
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(nullable NSError *)error
 {
     NSLog(@"获取到特征");
-
         if ([[service.UUID UUIDString] isEqualToString:@"01021525-0138-4968-BD13-824F74BE866C"]) {
             self.cPeripheral = peripheral;
             self.service = service;
@@ -139,7 +152,6 @@
         self.cPeripheral = peripheral;
         self.cPeripheral.delegate = self;
         self.scanResultBlock(peripheral);
-        
     }
 }
 
@@ -267,13 +279,9 @@
     
 }
 
-- (void) error
-{
-    
-}
-
 - (void) sendMessage:(NSString *)order ToCharType:(NSString *)uuidString withResultBlock:(BLE_ResponseResult) resultBlock
 {
+    
     CBCharacteristic *tempCharac = (CBCharacteristic *)[self.characteristicsDic objectForKey:uuidString];
     [_cPeripheral writeValue:[Wanbu_BlueToothUtility stringToByte:order] forCharacteristic:tempCharac type:CBCharacteristicWriteWithResponse];
     self.responseResultBlock = resultBlock;

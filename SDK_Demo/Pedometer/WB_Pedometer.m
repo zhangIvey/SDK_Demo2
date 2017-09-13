@@ -13,7 +13,7 @@
 
 - (void)setAMPMTimeSetting:(WB_AMPM_Setting_Action *)ampmAction withBlock:(void (^)(BOOL isSuccess)) block
 {
-    [[WB_BLEManager shareBLEManager] sendMessage:[ampmAction toOrderString] ToCharType:0 withResultBlock:^(NSData *resultData){
+    [[WB_BLEManager shareBLEManager] sendMessage:[ampmAction toOrderString] ToCharType:@"1527" withResultBlock:^(NSData *resultData){
         NSLog(@"设置朝朝暮暮的回调方法");
         //处理接收到的数据
         //捕获异常

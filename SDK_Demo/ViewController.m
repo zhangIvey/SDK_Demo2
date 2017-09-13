@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "WB_DevOpe.h"
+
 
 @interface ViewController ()
 
@@ -98,15 +98,23 @@
 {
     
     WB_DevOpe *deviceOpe = [WB_DevOpe shareOperation];
+    deviceOpe.delegate = self;
     [deviceOpe scanAndConnect];
     
 }
 
+- (void)recevicedAbnormal:(NSString *)message
+{
+    //[Toast show:@"失败的信息"];
+}
+
 - (void)getDeviceTypeButton_click
 {
-    [[WB_DevOpe shareOperation] getDeviceType:^(NSString *string){
-        _stringShowLabel.text = string; //更新界面
-    }];
+//    [[WB_DevOpe shareOperation] getDeviceType:^(NSString *string){
+//        _stringShowLabel.text = string; //更新界面
+//    }];
+    
+    [[WB_DevOpe shareOperation] groutingDevice];
     
 }
 

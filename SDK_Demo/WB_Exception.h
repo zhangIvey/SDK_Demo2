@@ -16,6 +16,15 @@
 @interface WB_Exception : NSObject
 
 @property(nonatomic, copy) NSString *warnningString; //提醒信息
+@property(nonatomic, copy) NSString *actionName;
+@property(nonatomic, copy) NSString *method;
 
+/*!
+ * @method writeLogs: andMethod:andNotes:
+ *
+ * @discussion 将要写的信息记录到文件中。
+ *
+ */
++ (void)writeLogs:(NSString *)className andMethod:(NSString *)methodName andNotes:(NSString *)notes;
 
 @end

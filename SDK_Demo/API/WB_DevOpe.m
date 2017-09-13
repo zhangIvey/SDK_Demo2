@@ -12,10 +12,10 @@
 
 
 
-@interface WB_DevOpe ()
+@interface WB_DevOpe () <WB_BLEManagerDelegate>
 
-@property(nonatomic, strong) id currentDevice;
-@property(nonatomic, strong) CBPeripheral *currentPeripheral;
+
+@property(nonatomic, strong) CBPeripheral   *currentPeripheral;
 
 
 @end
@@ -92,10 +92,23 @@
  * @discussion : 连接建立成功后，识别出设备是什么类型，什么型号的版本，然后进行对应型号的对象创建
  *
  */
-- (WB_Device *)groutingDeviceWithTypeName:(NSString *)typeName
+- (void)groutingDevice
 {
-
-    return _currentDevice;
+    __block NSString *type;
+    [self getDeviceType:^(NSString *typeName){
+        type = typeName;
+        if ([typeName isEqualToString:@"TW776"]) {
+            _currentDevice = [[WB_TW776 alloc] init];
+        }
+    }];
+    //固件版本号
+//    [self getModelID:^(NSString *modelString){
+//        if (_currentDevice != nil) {
+//            _currentDevice.modelID = modelString;
+//        }
+//    }]
+    
+    
 }
 
 
@@ -103,14 +116,11 @@
 - (void)getDeviceType:(void (^)(NSString *)) block
 {
     //判断当前设备的链接状态
-    
-    _currentDevice = (WB_Device *)[[WB_Device alloc] init];
-    __block WB_Device *device = _currentDevice;
-    device.delegate = self;
-    [_currentDevice getDeviceType:^(NSString *typeString){
+    WB_Device *temp = [[WB_Device alloc] init];
+    __block WB_Device *device = temp;
+    [device getDeviceType:^(NSString *typeString){
         NSLog(@"WB_DevOpe typeString = %@",typeString);
         block(typeString);
-        device.modelID = typeString;
     }];
 }
 
@@ -119,15 +129,28 @@
 - (void)setAMPMTime:(WB_AMPM_Setting_Action *)ampmSettingAction withResult:(void(^)(BOOL isSuccess)) result;
 {
     NSLog(@"设备类型： %@",[_currentDevice modelID]);
-    [_currentDevice setAMPMTimeSetting:ampmSettingAction withBlock:result];
+    
+    id pedo = (id)_currentDevice;
+    NSLog(@"设备类型： %@",[pedo modelID]);
+    [pedo setAMPMTimeSetting:ampmSettingAction withBlock:result];
 }
 
 #pragma mark - 数据异常监听
 - (void)receiveException:(WB_Exception *)exception
 {
     NSLog(@"提醒信息 ： %@",exception.warnningString);
-    NSLog(@"检测出了一个异常");
+    NSLog(@"出了一个异常");
+    //将问题反馈给调用者
+    if (_delegate) {
+        [_delegate recevicedAbnormal:exception.warnningString];
+    }
 }
 
+- (void)receviedAbnormal:(NSString *)message
+{
+    if (_delegate) {
+        [_delegate recevicedAbnormal:message];
+    }
+}
 
 @end

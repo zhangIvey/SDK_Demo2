@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WB_DevOpe.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <WB_DevOpeDelegate>
 
 
 @end

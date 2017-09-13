@@ -46,6 +46,14 @@ typedef id (^BLE_ResponseResultWithReturn)(NSData *data);
  */
 typedef void (^BLE_AMPMSettingResult)();
 
+#pragma mark - protocol
+
+@protocol WB_BLEManagerDelegate <NSObject>
+
+- (void)receviedAbnormal:(NSString *)message;
+
+@end
+
 #pragma mark - class for blueTooth
 /*!
  * @class WB_BLEManager 蓝牙功能类，单例
@@ -61,6 +69,7 @@ typedef void (^BLE_AMPMSettingResult)();
 @property(nonatomic, strong) CBService *service;
 @property(nonatomic, strong) NSMutableDictionary *characteristicsDic;
 @property(nonatomic, strong) NSData *currentResultData; //当前指令的返回数据。
+@property(nonatomic, assign) id<WB_BLEManagerDelegate> delegate;
 
 #pragma mark - 蓝牙功能的block
 /*!
@@ -78,18 +87,6 @@ typedef void (^BLE_AMPMSettingResult)();
  *
  */
 @property(nonatomic, copy) BLE_ConnectResult connectResultBlock;
-
-
-
-
-#pragma mark - 业务数据的回调block
-/*!
- * @property responseResultBlock 代码块
- *
- * @discussion 透传模式获取到数据之后的回调, 提供给WB_Pedometer使用
- * @see WB_Pedometer
- */
-//@property(nonatomic, copy) BLE_AMPMSettingResult ampmSettingResultBlock;
 
 
 #pragma mark - 蓝牙功能
@@ -143,13 +140,6 @@ typedef void (^BLE_AMPMSettingResult)();
  */
 - (void) disConnect;
 
-/*!
- * @method - error
- *
- * @discussion : 错误
- *
- */
-- (void) error;
 
 /*!
  * @method - sendMessage:order ToDeviceWithUUID:uuidString
