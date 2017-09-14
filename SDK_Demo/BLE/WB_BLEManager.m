@@ -57,6 +57,8 @@
         //成员变量初始化 -先使用主队列进行开发
         defaultBLEManager.centralManager = [[CBCentralManager alloc] initWithDelegate:defaultBLEManager queue:nil];
         
+        defaultBLEManager.exception = [[WB_Exception alloc] init];
+        
     });
     return defaultBLEManager;
 }
@@ -66,7 +68,7 @@
     NSLog(@"发现服务");
    
     if (error) {
-        [WB_Exception writeLogs:NSStringFromClass(self.class) andMethod:NSStringFromSelector(@selector(peripheral:didDiscoverServices:)) andNotes:@"需要备注信息"];
+        [self.exception writeLogs:NSStringFromClass(self.class) andMethod:NSStringFromSelector(@selector(peripheral:didDiscoverServices:)) andNotes:@"需要备注信息"];
         if (_delegate) {
             [_delegate receviedAbnormal:@"要反馈用户的失败信息！"];
         }
@@ -89,6 +91,14 @@
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(nullable NSError *)error
 {
+    if (error) {
+        [WB_Exception writeLogs:NSStringFromClass(self.class) andMethod:NSStringFromSelector(@selector(peripheral:didDiscoverServices:)) andNotes:@"需要备注信息"];
+        if (_delegate) {
+            [_delegate receviedAbnormal:@"要反馈用户的失败信息！"];
+        }
+        return;
+    }
+    
     NSLog(@"获取到特征");
         if ([[service.UUID UUIDString] isEqualToString:@"01021525-0138-4968-BD13-824F74BE866C"]) {
             self.cPeripheral = peripheral;
@@ -281,7 +291,7 @@
 
 - (void) sendMessage:(NSString *)order ToCharType:(NSString *)uuidString withResultBlock:(BLE_ResponseResult) resultBlock
 {
-    
+//    [self.exception writeLogs:<#(NSString *)#> andMethod:<#(NSString *)#> andNotes:<#(NSString *)#>];
     CBCharacteristic *tempCharac = (CBCharacteristic *)[self.characteristicsDic objectForKey:uuidString];
     [_cPeripheral writeValue:[Wanbu_BlueToothUtility stringToByte:order] forCharacteristic:tempCharac type:CBCharacteristicWriteWithResponse];
     self.responseResultBlock = resultBlock;

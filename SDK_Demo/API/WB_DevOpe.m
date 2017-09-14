@@ -135,6 +135,8 @@
 {
     if ([string isEqualToString:@"TW776"]) {
         _currentDevice = [[WB_TW776 alloc] init];
+        _currentDevice.delegate = self;
+        _currentDevice.modelID = string;
     }
     _currentDevice = [[WB_TW776 alloc] init];
     _currentDevice.delegate = self;
@@ -145,7 +147,7 @@
 #pragma mark - 计步器业务
 - (void)setAMPMTime:(WB_AMPM_Setting_Action *)ampmSettingAction withResult:(void(^)(BOOL isSuccess)) result;
 {
-    
+    //...type 类型（计步器，体测仪，...）
     id pedo = (id)_currentDevice;
     [pedo setAMPMTimeSetting:ampmSettingAction withBlock:result];
 }

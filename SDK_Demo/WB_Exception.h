@@ -20,8 +20,7 @@
 @property(nonatomic, copy)  NSString *warnningString; //提醒信息
 @property(nonatomic, copy)  NSString *actionName;
 @property(nonatomic, copy)  NSString *method;
-
-
+@property(nonatomic, assign) BOOL isON;
 
 /*!
  * @method writeLogs: andMethod:andNotes:
@@ -29,6 +28,6 @@
  * @discussion 将要写的信息记录到文件中。
  *
  */
-+ (void)writeLogs:(NSString *)className andMethod:(NSString *)methodName andNotes:(NSString *)notes;
+- (void)writeLogs:(NSString *)className andMethod:(NSString *)methodName andNotes:(NSString *)notes;
 
 @end
